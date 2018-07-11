@@ -1,4 +1,4 @@
-import { Tracer } from './modules';
+import { Tracer } from '../';
 import sandbox from './sandbox';
 
 self.importScripts('https://unpkg.com/babel-standalone@6/babel.min.js');
