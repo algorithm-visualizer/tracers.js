@@ -1,6 +1,6 @@
 package org.algorithm_visualizer.tracers;
 
-public class Array2DTracer<T extends Array2DTracer<T>> extends Tracer {
+public class Array2DTracer extends Tracer {
     public static class Array2DOptions extends Options {
     }
 
@@ -20,43 +20,58 @@ public class Array2DTracer<T extends Array2DTracer<T>> extends Tracer {
         this(null, null);
     }
 
-    public T patch(Object... args) {
-        Array2DTracer.addTrace(key, "patch", args);
-        return (T) this;
+    public Array2DTracer reset(Object... args) {
+        Tracer.addTrace(key, "reset", args);
+        return this;
     }
 
-    public T depatch(Object... args) {
-        Array2DTracer.addTrace(key, "depatch", args);
-        return (T) this;
+    public Array2DTracer set(Object... args) {
+        Tracer.addTrace(key, "set", args);
+        return this;
     }
 
-    public T select(Object... args) {
-        Array2DTracer.addTrace(key, "select", args);
-        return (T) this;
+    public Array2DTracer delay(Object... args) {
+        Tracer.addTrace(key, "delay", args);
+        return this;
     }
 
-    public T selectRow(Object... args) {
-        Array2DTracer.addTrace(key, "selectRow", args);
-        return (T) this;
+    public Array2DTracer patch(Object... args) {
+        Tracer.addTrace(key, "patch", args);
+        return this;
     }
 
-    public T selectCol(Object... args) {
-        Array2DTracer.addTrace(key, "selectCol", args);
-        return (T) this;
+    public Array2DTracer depatch(Object... args) {
+        Tracer.addTrace(key, "depatch", args);
+        return this;
     }
 
-    public T deselect(Object... args) {
-        Array2DTracer.addTrace(key, "deselect", args);
-        return (T) this;
+    public Array2DTracer select(Object... args) {
+        Tracer.addTrace(key, "select", args);
+        return this;
     }
 
-    public T deselectRow(Object... args) {
-        Array2DTracer.addTrace(key, "deselectRow", args);
-        return (T) this;
+    public Array2DTracer selectRow(Object... args) {
+        Tracer.addTrace(key, "selectRow", args);
+        return this;
     }
 
-    public T deselectCol(Object... args) {
-        Array2DTracer.addTrace(key, "deselectCol", args);
-        return (T) this;
+    public Array2DTracer selectCol(Object... args) {
+        Tracer.addTrace(key, "selectCol", args);
+        return this;
+    }
+
+    public Array2DTracer deselect(Object... args) {
+        Tracer.addTrace(key, "deselect", args);
+        return this;
+    }
+
+    public Array2DTracer deselectRow(Object... args) {
+        Tracer.addTrace(key, "deselectRow", args);
+        return this;
+    }
+
+    public Array2DTracer deselectCol(Object... args) {
+        Tracer.addTrace(key, "deselectCol", args);
+        return this;
     }
 }

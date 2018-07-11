@@ -1,8 +1,8 @@
 import { Array2DTracer } from './';
 
 class Array1DTracer extends Array2DTracer {
-  constructor(title, options) {
-    super(title, options);
+  constructor(title) {
+    super(title);
 
     this.unregister(
       'selectRow',

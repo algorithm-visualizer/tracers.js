@@ -5,10 +5,10 @@ class Tracer {
     return JSON.parse(JSON.stringify(object));
   }
 
-  static addTracer(className, title, options) {
+  static addTracer(className, title) {
     const key = `${this.tracerCount++}-${className}-${title}`;
     const method = 'construct';
-    const args = [className, title, options];
+    const args = [className, title];
     this.addTrace(key, method, args);
     return key;
   }
@@ -24,12 +24,8 @@ class Tracer {
     if (this.tracerCount > maxTracers) throw new Error('Tracers Limit Exceeded');
   }
 
-  constructor(title = this.constructor.name, options = {}) {
-    if (typeof title === 'object') {
-      options = title;
-      title = this.constructor.name;
-    }
-    this.key = Tracer.addTracer(this.constructor.name, title, options);
+  constructor(title = this.constructor.name) {
+    this.key = Tracer.addTracer(this.constructor.name, title);
     this.register(
       'reset',
       'set',

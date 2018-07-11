@@ -2,7 +2,7 @@ package org.algorithm_visualizer.tracers;
 
 import com.google.gson.Gson;
 
-public class Tracer<T extends Tracer<T>> {
+public abstract class Tracer {
     private static Gson gson = new Gson();
     private static int tracerCount = 0;
     private static int traceCount = 0;
@@ -58,20 +58,5 @@ public class Tracer<T extends Tracer<T>> {
 
     public Tracer() {
         this(null, null);
-    }
-
-    public T reset(Object... args) {
-        Tracer.addTrace(key, "reset", args);
-        return (T) this;
-    }
-
-    public T set(Object... args) {
-        Tracer.addTrace(key, "set", args);
-        return (T) this;
-    }
-
-    public T delay(Object... args) {
-        Tracer.addTrace(key, "delay", args);
-        return (T) this;
     }
 }

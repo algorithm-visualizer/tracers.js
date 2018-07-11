@@ -1,8 +1,8 @@
 import { Tracer } from './';
 
 class Array2DTracer extends Tracer {
-  constructor(title, options) {
-    super(title, options);
+  constructor(title) {
+    super(title);
 
     this.register(
       'patch',
