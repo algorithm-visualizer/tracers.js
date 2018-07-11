@@ -5,8 +5,8 @@ class Array2DTracer extends Tracer {
     super(title, options);
 
     this.register(
-      'notify',
-      'denotify',
+      'patch',
+      'depatch',
       'select',
       'selectRow',
       'selectCol',

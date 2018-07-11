@@ -33,7 +33,7 @@ class Tracer {
     this.register(
       'reset',
       'set',
-      'wait',
+      'delay',
     );
   }
 
