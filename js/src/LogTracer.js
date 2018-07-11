@@ -1,4 +1,4 @@
-import { Tracer } from './modules';
+import { Tracer } from './';
 
 class LogTracer extends Tracer {
   constructor(title, options) {

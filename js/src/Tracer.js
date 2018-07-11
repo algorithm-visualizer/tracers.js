@@ -1,7 +1,10 @@
-import { serialize } from '/common/util';
-import { tracersLimit, tracesLimit } from '/common/config';
+import { maxTracers, maxTraces } from '../../limits.json';
 
 class Tracer {
+  static serialize(object) {
+    return JSON.parse(JSON.stringify(object));
+  }
+
   static addTracer(className, title, options) {
     const key = `${this.tracerCount++}-${className}-${title}`;
     const method = 'construct';
@@ -14,11 +17,11 @@ class Tracer {
     const trace = {
       tracerKey,
       method,
-      args: serialize(args.map(arg => arg instanceof Tracer ? arg.key : arg)),
+      args: this.serialize(args.map(arg => arg instanceof Tracer ? arg.key : arg)),
     };
     this.traces.push(trace);
-    if (this.traces.length > tracesLimit) throw new Error('Traces Limit Exceeded');
-    if (this.tracerCount > tracersLimit) throw new Error('Tracers Limit Exceeded');
+    if (this.traces.length > maxTraces) throw new Error('Traces Limit Exceeded');
+    if (this.tracerCount > maxTracers) throw new Error('Tracers Limit Exceeded');
   }
 
   constructor(title = this.constructor.name, options = {}) {

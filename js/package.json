@@ -1,0 +1,28 @@
+{
+  "name": "@algorithm-visualizer/tracers",
+  "version": "2.0.0",
+  "description": "JavaScript Tracers For Algorithm Visualizer",
+  "scripts": {
+    "build": "node ./node_modules/webpack/bin/webpack --bail --progress --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algorithm-visualizer/tracers.git"
+  },
+  "author": {
+    "name": "Jinseo Jason Park",
+    "email": "parkjs814@gmail.com",
+    "url": "https://jasonpark.me/"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
+  }
+}
