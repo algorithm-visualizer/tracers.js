@@ -22,10 +22,10 @@ public abstract class Tracer {
         }
     }
 
-    private static String addTracer(String className, String title, Options options) {
+    private static String addTracer(String className, String title) {
         String key = String.format("%d-%s-%s", tracerCount++, className, title);
         String method = "construct";
-        Object[] args = new Object[]{className, title, options};
+        Object[] args = new Object[]{className, title};
         addTrace(key, method, args);
         return key;
     }
@@ -37,26 +37,10 @@ public abstract class Tracer {
         if (tracerCount > maxTracers) throw new Error("Tracers Limit Exceeded");
     }
 
-    protected String key = null;
+    protected String key;
 
-    public static class Options {
-    }
-
-    public Tracer(String title, Options options) {
+    protected Tracer(String title) {
         if (title == null) title = this.getClass().getSimpleName();
-        if (options == null) options = new Options();
-        key = Tracer.addTracer(this.getClass().getSimpleName(), title, options);
-    }
-
-    public Tracer(String title) {
-        this(title, null);
-    }
-
-    public Tracer(Options options) {
-        this(null, options);
-    }
-
-    public Tracer() {
-        this(null, null);
+        key = Tracer.addTracer(this.getClass().getSimpleName(), title);
     }
 }

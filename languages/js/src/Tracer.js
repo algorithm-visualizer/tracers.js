@@ -1,4 +1,4 @@
-import { maxTracers, maxTraces } from '../../limits.json';
+import { maxTracers, maxTraces } from '../../../limits';
 
 class Tracer {
   static serialize(object) {
