@@ -1,11 +1,11 @@
 export default {
   name: 'Array1DTracer',
-  description: 'Tracer for a one-dimensional array.',
+  description: 'Visualize a one-dimensional array into a table.',
   methods: [{
     name: 'set',
     description: 'Set `array1d` to visualize.',
     arguments: [
-      { name: 'array1d', type: 'Object[]' },
+      { name: 'array1d', type: 'Object[]', default: '[]' },
     ],
   }, {
     name: 'reset',
@@ -13,7 +13,7 @@ export default {
     arguments: [],
   }, {
     name: 'delay',
-    description: 'Pause to show changes in data.',
+    description: 'Pause to show changes in all tracers.',
     arguments: [],
   }, {
     name: 'patch',

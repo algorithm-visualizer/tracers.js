@@ -1,11 +1,11 @@
 export default {
   name: 'Array2DTracer',
-  description: 'Tracer for a two-dimensional array.',
+  description: 'Visualize a two-dimensional array into a table.',
   methods: [{
     name: 'set',
     description: 'Set `array2d` to visualize.',
     arguments: [
-      { name: 'array2d', type: 'Object[][]' },
+      { name: 'array2d', type: 'Object[][]', default: '[]' },
     ],
   }, {
     name: 'reset',
@@ -13,7 +13,7 @@ export default {
     arguments: [],
   }, {
     name: 'delay',
-    description: 'Pause to show changes in data.',
+    description: 'Pause to show changes in all tracers.',
     arguments: [],
   }, {
     name: 'patch',

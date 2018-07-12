@@ -17,17 +17,17 @@ class Integer extends Randomizer {
 }
 
 class String extends Randomizer {
-  constructor(length = 16, choices = 'abcdefghijklmnopqrstuvwxyz') {
+  constructor(length = 16, letters = 'abcdefghijklmnopqrstuvwxyz') {
     super();
     this._length = length;
-    this._choices = choices;
+    this._letters = letters;
   }
 
   create() {
     let text = '';
-    const randomizer = new Integer(0, this._choices.length - 1);
+    const randomizer = new Integer(0, this._letters.length - 1);
     for (let i = 0; i < this._length; i++) {
-      text += this._choices[randomizer.create()];
+      text += this._letters[randomizer.create()];
     }
     return text;
   }

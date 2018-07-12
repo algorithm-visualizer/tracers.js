@@ -5,7 +5,7 @@ export default {
     name: 'set',
     description: 'Set `array1d` to visualize.',
     arguments: [
-      { name: 'array1d', type: 'Object[]' },
+      { name: 'array1d', type: 'Object[]', default: '[]' },
     ],
   }, {
     name: 'reset',
