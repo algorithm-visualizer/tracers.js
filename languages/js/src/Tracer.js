@@ -1,4 +1,4 @@
-import { maxTracers, maxTraces } from '../../../limits';
+import { MAX_TRACERS, MAX_TRACES } from '../../../env';
 
 class Tracer {
   static serialize(object) {
@@ -20,8 +20,8 @@ class Tracer {
       args: this.serialize(args.map(arg => arg instanceof Tracer ? arg.key : arg)),
     };
     this.traces.push(trace);
-    if (this.traces.length > maxTraces) throw new Error('Traces Limit Exceeded');
-    if (this.tracerCount > maxTracers) throw new Error('Tracers Limit Exceeded');
+    if (this.traces.length > MAX_TRACES) throw new Error('Traces Limit Exceeded');
+    if (this.tracerCount > MAX_TRACERS) throw new Error('Tracers Limit Exceeded');
   }
 
   constructor(title = this.constructor.name) {
@@ -39,12 +39,6 @@ class Tracer {
         Tracer.addTrace(this.key, func, args);
         return this;
       };
-    }
-  }
-
-  unregister(...functions) {
-    for (const func of functions) {
-      delete this[func];
     }
   }
 }

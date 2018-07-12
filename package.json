@@ -2,7 +2,11 @@
   "name": "@algorithm-visualizer/tracer-generator",
   "version": "2.0.0",
   "description": "Tracer Generator for Algorithm Visualizer",
-  "scripts": {},
+  "scripts": {
+    "build": "npm run build:java && npm run build:js",
+    "build:java": "./node_modules/.bin/babel-node templates/java.js && cd languages/java && ./gradlew shadowJar",
+    "build:js": "./node_modules/.bin/babel-node templates/js.js && cd languages/js && npm run build"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/algorithm-visualizer/tracers.git"
@@ -13,5 +17,9 @@
     "url": "https://jasonpark.me/"
   },
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1"
+  }
 }

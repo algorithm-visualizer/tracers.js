@@ -1,6 +1,5 @@
-.idea
-.DS_Store
-.gradle
-.gradletasknamecache
-out
-build
+/.gradle
+/.idea
+/build
+/out
+/.gradletasknamecache

@@ -1,5 +1,5 @@
-.idea
-node_modules
-npm-debug.log
-.DS_Store
-package-lock.json
+/.idea
+/build
+/node_modules
+/npm-debug.log
+/package-lock.json

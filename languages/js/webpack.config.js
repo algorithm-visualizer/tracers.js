@@ -2,7 +2,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 
-const builtPath = path.resolve(__dirname, 'built');
+const buildPath = path.resolve(__dirname, 'build');
 const srcPath = path.resolve(__dirname, 'src');
 
 module.exports = [{
@@ -13,7 +13,7 @@ module.exports = [{
     extensions: ['.js'],
   },
   output: {
-    path: builtPath,
+    path: buildPath,
     filename: 'index.js',
   },
   module: {
@@ -22,7 +22,7 @@ module.exports = [{
     ],
   },
   plugins: [
-    new CleanWebpackPlugin([builtPath]),
+    new CleanWebpackPlugin([buildPath]),
   ],
   optimization: {
     minimizer: [
