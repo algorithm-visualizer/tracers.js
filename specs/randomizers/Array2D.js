@@ -1,23 +1,26 @@
 export default {
-  name: 'Array2D',
+  name: 'Randomize.Array2D',
   description: 'Create a random two-dimensional array.',
   methods: [{
     name: 'constructor',
     description: 'The array would have a size of `N` x `M`, and each value would be randomized by `randomizer`.',
+    return: 'Randomize.Array2D',
     arguments: [
-      { name: 'N', type: 'Number', default: '10' },
-      { name: 'M', type: 'Number', default: '10' },
+      { name: 'N', type: 'int', default: '10' },
+      { name: 'M', type: 'int', default: '10' },
       { name: 'randomizer', type: 'Randomizer', default: 'new Integer()' },
     ],
   }, {
     name: 'sorted',
     description: 'Each row of the array would be sorted if `sorted` is `true`.',
+    return: 'Randomize.Array2D',
     arguments: [
-      { name: 'sorted', type: 'Boolean', default: 'true' },
+      { name: 'sorted', type: 'boolean', default: 'true' },
     ],
   }, {
     name: 'create',
     description: 'Create a random two-dimensional array.',
+    return: 'Object[][]',
     arguments: [],
   }],
 };

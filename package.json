@@ -3,9 +3,10 @@
   "version": "2.0.0",
   "description": "Tracer Generator for Algorithm Visualizer",
   "scripts": {
-    "build": "npm run build:java && npm run build:js",
+    "build": "npm run build:docs && npm run build:java && npm run build:js",
+    "build:docs": "./node_modules/.bin/babel-node templates/docs.js",
     "build:java": "./node_modules/.bin/babel-node templates/java.js && cd languages/java && ./gradlew shadowJar",
-    "build:js": "./node_modules/.bin/babel-node templates/js.js && cd languages/js && npm run build"
+    "build:js": "./node_modules/.bin/babel-node templates/js.js && cd languages/js && npm install && npm run build"
   },
   "repository": {
     "type": "git",
