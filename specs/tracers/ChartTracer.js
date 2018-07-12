@@ -2,9 +2,9 @@ export default {
   name: 'ChartTracer',
   description: 'Visualize a one-dimensional array into a bar chart.',
   methods: [{
-    name: 'constructor',
+    name: 'ChartTracer',
     description: 'Create a ChartTracer object.',
-    return: 'ChartTracer',
+    return: 'new',
     arguments: [
       { name: 'title', type: 'String', default: '\"ChartTracer\"' },
     ],

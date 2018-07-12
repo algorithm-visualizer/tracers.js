@@ -1,8 +1,9 @@
 import path from 'path';
 import fs from 'fs';
 import * as tracers from '../specs/tracers';
+import { js as jsPaths } from '../paths';
 
-const srcPath = path.resolve(__dirname, '../languages/js/src');
+const srcPath = path.resolve(__dirname, '..', jsPaths.src);
 Object.values(tracers).forEach(tracer => {
   const outputPath = path.resolve(srcPath, `${tracer.name}.js`);
   const methodNames = [...new Set(tracer.methods.map(method => method.name))];

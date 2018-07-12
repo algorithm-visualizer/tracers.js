@@ -2,9 +2,9 @@ export default {
   name: 'Randomize.Integer',
   description: 'Create a random integer.',
   methods: [{
-    name: 'constructor',
+    name: 'Randomize.Integer',
     description: 'The integer would be between `min` and `max` inclusive.',
-    return: 'Randomize.Integer',
+    return: 'new',
     arguments: [
       { name: 'min', type: 'int', default: '1' },
       { name: 'max', type: 'int', default: '9' },

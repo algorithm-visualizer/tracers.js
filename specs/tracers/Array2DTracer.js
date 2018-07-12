@@ -2,9 +2,9 @@ export default {
   name: 'Array2DTracer',
   description: 'Visualize a two-dimensional array into a table.',
   methods: [{
-    name: 'constructor',
+    name: 'Array2DTracer',
     description: 'Create an Array2DTracer object.',
-    return: 'Array2DTracer',
+    return: 'new',
     arguments: [
       { name: 'title', type: 'String', default: '\"Array2DTracer\"' },
     ],

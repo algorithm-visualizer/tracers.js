@@ -2,9 +2,9 @@ export default {
   name: 'Randomize.Graph',
   description: 'Create a random adjacency matrix.',
   methods: [{
-    name: 'constructor',
+    name: 'Randomize.Graph',
     description: 'The graph would have `N` nodes and roughly `ratio` * 100% of all the possible edges, and the weight of each edge would be randomized by `randomizer`.',
-    return: 'Randomize.Graph',
+    return: 'new',
     arguments: [
       { name: 'N', type: 'int', default: '5' },
       { name: 'ratio', type: 'double', default: '.3' },

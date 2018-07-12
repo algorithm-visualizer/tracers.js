@@ -2,9 +2,9 @@ export default {
   name: 'GraphTracer',
   description: 'Visualize an adjacency matrix into a graph.',
   methods: [{
-    name: 'constructor',
+    name: 'GraphTracer',
     description: 'Create a GraphTracer object.',
-    return: 'GraphTracer',
+    return: 'new',
     arguments: [
       { name: 'title', type: 'String', default: '\"GraphTracer\"' },
     ],

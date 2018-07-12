@@ -1,10 +1,10 @@
-export default {
+export default { // TODO: fix types (i.e. Number => int)
   name: 'Array1DTracer',
   description: 'Visualize a one-dimensional array into a table.',
   methods: [{
-    name: 'constructor',
+    name: 'Array1DTracer',
     description: 'Create an Array1DTracer object.',
-    return: 'Array1DTracer',
+    return: 'new',
     arguments: [
       { name: 'title', type: 'String', default: '\"Array1DTracer\"' },
     ],

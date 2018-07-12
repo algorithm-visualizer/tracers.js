@@ -2,9 +2,9 @@ export default {
   name: 'Randomize.Array2D',
   description: 'Create a random two-dimensional array.',
   methods: [{
-    name: 'constructor',
+    name: 'Randomize.Array2D',
     description: 'The array would have a size of `N` x `M`, and each value would be randomized by `randomizer`.',
-    return: 'Randomize.Array2D',
+    return: 'new',
     arguments: [
       { name: 'N', type: 'int', default: '10' },
       { name: 'M', type: 'int', default: '10' },

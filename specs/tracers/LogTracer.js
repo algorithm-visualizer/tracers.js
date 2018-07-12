@@ -2,9 +2,9 @@ export default {
   name: 'LogTracer',
   description: 'Print logs.',
   methods: [{
-    name: 'constructor',
+    name: 'LogTracer',
     description: 'Create a LogTracer object.',
-    return: 'LogTracer',
+    return: 'new',
     arguments: [
       { name: 'title', type: 'String', default: '\"LogTracer\"' },
     ],
