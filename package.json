@@ -5,8 +5,8 @@
   "scripts": {
     "build": "npm run build:docs && npm run build:java && npm run build:js",
     "build:docs": "./node_modules/.bin/babel-node templates/docs.js",
-    "build:java": "./node_modules/.bin/babel-node templates/java.js && cd languages/java && ./gradlew shadowJar",
-    "build:js": "./node_modules/.bin/babel-node templates/js.js && cd languages/js && npm install && npm run build"
+    "build:java": "./node_modules/.bin/babel-node templates/java.js",
+    "build:js": "./node_modules/.bin/babel-node templates/js.js"
   },
   "repository": {
     "type": "git",

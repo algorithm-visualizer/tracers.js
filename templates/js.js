@@ -1,13 +1,9 @@
-import path from 'path';
-import fs from 'fs';
-import * as tracers from '../specs/tracers';
-import { js as jsPaths } from '../paths';
+import { js } from '../config';
 
-const srcPath = path.resolve(__dirname, '..', jsPaths.src);
-Object.values(tracers).forEach(tracer => {
-  const outputPath = path.resolve(srcPath, `${tracer.name}.js`);
+js.spec(tracer => {
   const methodNames = [...new Set(tracer.methods.map(method => method.name))];
 
+  const name = `${tracer.name}.js`;
   const content = `import { Tracer } from './';
 
 class ${tracer.name} extends Tracer {
@@ -20,9 +16,9 @@ class ${tracer.name} extends Tracer {
 
 export default ${tracer.name};`;
 
-  fs.writeFileSync(outputPath, content);
-});
-
-const outputPath = path.resolve(srcPath, 'index.js');
-const content = Object.values(tracers).map(tracer => `export { default as ${tracer.name} } from './${tracer.name}';`).join('\n');
-fs.writeFileSync(outputPath, content);
+  return { name, content };
+}).index(tracers => {
+  const name = 'index.js';
+  const content = tracers.map(tracer => `export { default as ${tracer.name} } from './${tracer.name}';`).join('\n');
+  return { name, content };
+}).build();

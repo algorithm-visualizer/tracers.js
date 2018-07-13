@@ -1,13 +1,9 @@
-import path from 'path';
-import fs from 'fs';
-import * as tracers from '../specs/tracers';
-import { java as javaPaths } from '../paths';
+import { java } from '../config';
 
-const srcPath = path.resolve(__dirname, '..', javaPaths.src);
-Object.values(tracers).forEach(tracer => {
-  const outputPath = path.resolve(srcPath, `${tracer.name}.java`);
+java.spec(tracer => {
   const methodNames = [...new Set(tracer.methods.map(method => method.name))];
 
+  const name = `${tracer.name}.java`;
   const content = `package org.algorithm_visualizer.tracers;
 
 public class ${tracer.name} extends Tracer {
@@ -25,5 +21,5 @@ ${methodNames.map(methodName => `
     }`).join('\n')}
 }`;
 
-  fs.writeFileSync(outputPath, content);
-});
+  return { name, content };
+}).build();

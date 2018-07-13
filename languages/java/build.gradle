@@ -4,7 +4,6 @@ plugins {
 }
 
 group 'org.algorithm_visualizer'
-version '2.0'
 
 sourceCompatibility = 1.8
 

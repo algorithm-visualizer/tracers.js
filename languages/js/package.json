@@ -1,6 +1,5 @@
 {
   "name": "@algorithm-visualizer/tracers",
-  "version": "2.0.0",
   "description": "JavaScript Tracers for Algorithm Visualizer",
   "scripts": {
     "build": "node ./node_modules/webpack/bin/webpack --bail --progress --config webpack.config.js"

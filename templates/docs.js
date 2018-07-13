@@ -1,17 +1,10 @@
-import path from 'path';
-import fs from 'fs';
-import * as tracers from '../specs/tracers';
-import * as randomizers from '../specs/randomizers';
+import { docs } from '../config';
 
-const srcPath = path.resolve(__dirname, '../docs');
-Object.values({ ...tracers, ...randomizers }).forEach(tracer => {
-  const outputPath = path.resolve(srcPath, `${tracer.name}.md`);
-
+docs.spec(tracer => {
+  const name = `${tracer.name}.md`;
   const content = `# ${tracer.name}
 
-${tracer.description}
-
-[Find Usages](https://github.com/search?q=${tracer.name}+repo%3Aalgorithm-visualizer%2Falgorithms&type=Code)
+${tracer.description} [Usage](https://github.com/search?q=${tracer.name}+repo%3Aalgorithm-visualizer%2Falgorithms&type=Code)
 
 ## Methods
 
@@ -25,7 +18,7 @@ ${tracer.description}
     <tr>
       <td align="right"><b>${method.name}</b></td>
       <td>${method.description.replace(/`(\w+)`/g, (match, p1) => `<code>${p1}</code>`)}</td>
-      <td><a href="https://github.com/search?q=${tracer.name}+${method.name}+repo%3Aalgorithm-visualizer%2Falgorithms&type=Code">Find Usages</a></td>
+      <td><a href="https://github.com/search?q=${tracer.name}+${method.name}+repo%3Aalgorithm-visualizer%2Falgorithms&type=Code">Usage</a></td>
     </tr>
     <tr>
       <td colspan="3">
@@ -33,12 +26,7 @@ ${tracer.description}
       </td>
     </tr>`).join('')}
   </tbody>
-</table>
+</table>`;
 
-## Sources
-
-$
-`; // TODO: sources?
-
-  fs.writeFileSync(outputPath, content);
-});
+  return { name, content };
+}, true);
