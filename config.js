@@ -20,7 +20,9 @@ const common = {
     return this;
   },
   build: function () {
-    const buildProcess = exec(`${this.buildCommand} && cp ${this.buildPath} ${path.resolve(__dirname, 'release', this.releaseFileName)}`, { cwd: this.cwd });
+    const releasePath = path.resolve(__dirname, 'release');
+    if (!fs.existsSync(releasePath)) fs.mkdirSync(releasePath);
+    const buildProcess = exec(`${this.buildCommand} && cp ${this.buildPath} ${path.resolve(releasePath, this.releaseFileName)}`, { cwd: this.cwd });
     buildProcess.stdout.pipe(process.stdout);
     buildProcess.stderr.pipe(process.stderr);
     buildProcess.on('exit', process.exit);

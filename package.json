@@ -1,12 +1,12 @@
 {
   "name": "@algorithm-visualizer/tracer-generator",
-  "version": "2.0.0",
   "description": "Tracer Generator for Algorithm Visualizer",
   "scripts": {
     "build": "npm run build:docs && npm run build:java && npm run build:js",
     "build:docs": "./node_modules/.bin/babel-node templates/docs.js",
     "build:java": "./node_modules/.bin/babel-node templates/java.js",
-    "build:js": "./node_modules/.bin/babel-node templates/js.js"
+    "build:js": "./node_modules/.bin/babel-node templates/js.js",
+    "release": "./bin/release.sh"
   },
   "repository": {
     "type": "git",
