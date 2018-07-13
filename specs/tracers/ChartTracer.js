@@ -30,7 +30,7 @@ export default {
     description: 'Notify that the value at (`x`) has been changed to `v`.',
     return: 'ChartTracer',
     arguments: [
-      { name: 'x', type: 'Number' },
+      { name: 'x', type: 'int' },
       { name: 'v', type: 'Object' },
     ],
   }, {
@@ -38,37 +38,37 @@ export default {
     description: 'Stop notifying that the value at (`x`) has been changed.',
     return: 'ChartTracer',
     arguments: [
-      { name: 'x', type: 'Number' },
+      { name: 'x', type: 'int' },
     ],
   }, {
     name: 'select',
     description: 'Select (`x`).',
     return: 'ChartTracer',
     arguments: [
-      { name: 'x', type: 'Number' },
+      { name: 'x', type: 'int' },
     ],
   }, {
     name: 'select',
     description: 'Select from (`sx`) to (`ex`).',
     return: 'ChartTracer',
     arguments: [
-      { name: 'sx', type: 'Number' },
-      { name: 'ex', type: 'Number' },
+      { name: 'sx', type: 'int' },
+      { name: 'ex', type: 'int' },
     ],
   }, {
     name: 'deselect',
     description: 'Stop selecting (`x`).',
     return: 'ChartTracer',
     arguments: [
-      { name: 'x', type: 'Number' },
+      { name: 'x', type: 'int' },
     ],
   }, {
     name: 'deselect',
     description: 'Stop selecting from (`sx`) to (`ex`).',
     return: 'ChartTracer',
     arguments: [
-      { name: 'sx', type: 'Number' },
-      { name: 'ex', type: 'Number' },
+      { name: 'sx', type: 'int' },
+      { name: 'ex', type: 'int' },
     ],
   }, {
     name: 'chart',

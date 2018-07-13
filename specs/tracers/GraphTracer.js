@@ -30,14 +30,14 @@ export default {
     description: 'Make the graph directed.',
     return: 'GraphTracer',
     arguments: [
-      { name: 'isDirected', type: 'Boolean', default: 'true' },
+      { name: 'isDirected', type: 'boolean', default: 'true' },
     ],
   }, {
     name: 'weighted',
     description: 'Make the graph weighted.',
     return: 'GraphTracer',
     arguments: [
-      { name: 'isWeighted', type: 'Boolean', default: 'true' },
+      { name: 'isWeighted', type: 'boolean', default: 'true' },
     ],
   }, {
     name: 'addNode',
@@ -45,11 +45,11 @@ export default {
     return: 'GraphTracer',
     arguments: [
       { name: 'id', type: 'Object' },
-      { name: 'weight', type: 'Number', default: 'null' },
-      { name: 'visitedCount', type: 'Number', default: '0' },
-      { name: 'selectedCount', type: 'Number', default: '0' },
-      { name: 'x', type: 'Number', default: '0' },
-      { name: 'y', type: 'Number', default: '0' },
+      { name: 'weight', type: 'double', default: 'null' },
+      { name: 'visitedCount', type: 'int', default: '0' },
+      { name: 'selectedCount', type: 'int', default: '0' },
+      { name: 'x', type: 'double', default: '0' },
+      { name: 'y', type: 'double', default: '0' },
     ],
   }, {
     name: 'addEdge',
@@ -58,9 +58,9 @@ export default {
     arguments: [
       { name: 'source', type: 'Object' },
       { name: 'target', type: 'Object' },
-      { name: 'weight', type: 'Number', default: 'null' },
-      { name: 'visitedCount', type: 'Number', default: '0' },
-      { name: 'selectedCount', type: 'Number', default: '0' },
+      { name: 'weight', type: 'double', default: 'null' },
+      { name: 'visitedCount', type: 'int', default: '0' },
+      { name: 'selectedCount', type: 'int', default: '0' },
     ],
   }, {
     name: 'layoutCircle',
@@ -73,7 +73,7 @@ export default {
     return: 'GraphTracer',
     arguments: [
       { name: 'root', type: 'Object', default: '0' },
-      { name: 'sorted', type: 'Boolean', default: 'false' },
+      { name: 'sorted', type: 'boolean', default: 'false' },
     ],
   }, {
     name: 'layoutRandom',
@@ -87,7 +87,7 @@ export default {
     arguments: [
       { name: 'target', type: 'Object' },
       { name: 'source', type: 'Object', default: 'null' },
-      { name: 'weight', type: 'Number', default: 'null' },
+      { name: 'weight', type: 'double', default: 'null' },
     ],
   }, {
     name: 'leave',
@@ -96,7 +96,7 @@ export default {
     arguments: [
       { name: 'target', type: 'Object' },
       { name: 'source', type: 'Object', default: 'null' },
-      { name: 'weight', type: 'Number', default: 'null' },
+      { name: 'weight', type: 'double', default: 'null' },
     ],
   }, {
     name: 'select',
