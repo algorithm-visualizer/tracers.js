@@ -9,10 +9,12 @@ PROJECT_ROOT="$(dirname "$0")/.."
 
 TAG="v$VERSION"
 
-(cd ${PROJECT_ROOT} && npm run build) &&
+(cd ${PROJECT_ROOT} && npm run build) && (
 
-(cd ${PROJECT_ROOT}/docs && git add . && git commit -m "${TAG}" && git push) &&
+    (cd ${PROJECT_ROOT}/docs && git add . && git commit -m "${TAG}" && git push)
 
-(cd ${PROJECT_ROOT} && git submodule update --remote && git add . && git commit -m "Release ${TAG}" && git push) &&
+    (cd ${PROJECT_ROOT} && git submodule update --remote && git add . && git commit -m "Release ${TAG}" && git push)
 
-(cd ${PROJECT_ROOT} && ghr -u 'algorithm-visualizer' -r 'tracers' ${TAG} release/)
+    (cd ${PROJECT_ROOT} && ghr -u 'algorithm-visualizer' -r 'tracers' ${TAG} release/)
+
+)
