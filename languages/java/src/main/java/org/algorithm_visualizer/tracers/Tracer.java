@@ -2,13 +2,31 @@ package org.algorithm_visualizer.tracers;
 
 import com.google.gson.Gson;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 public abstract class Tracer {
     private static Gson gson = new Gson();
     private static int tracerCount = 0;
-    private static int traceCount = 0;
+    private static ArrayList<Trace> traces = new ArrayList<>();
 
     private static int maxTraces = Integer.parseInt(System.getenv("MAX_TRACES"));
     private static int maxTracers = Integer.parseInt(System.getenv("MAX_TRACERS"));
+
+    static {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                FileWriter fileWriter = new FileWriter("traces.json");
+                PrintWriter printWriter = new PrintWriter(fileWriter);
+                printWriter.print(gson.toJson(traces));
+                printWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }));
+    }
 
     private static class Trace {
         private String tracerKey;
@@ -18,7 +36,7 @@ public abstract class Tracer {
         Trace(String tracerKey, String method, Object[] args) {
             this.tracerKey = tracerKey;
             this.method = method;
-            this.args = args;
+            this.args = gson.fromJson(gson.toJson(args), Object[].class);
         }
     }
 
@@ -32,8 +50,8 @@ public abstract class Tracer {
 
     protected static void addTrace(String tracerKey, String method, Object[] args) {
         Trace trace = new Trace(tracerKey, method, args);
-        System.out.println(gson.toJson(trace));
-        if (++traceCount > maxTraces) throw new Error("Traces Limit Exceeded");
+        traces.add(trace);
+        if (traces.size() > maxTraces) throw new Error("Traces Limit Exceeded");
         if (tracerCount > maxTracers) throw new Error("Tracers Limit Exceeded");
     }
 

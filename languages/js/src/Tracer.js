@@ -2,10 +2,6 @@ const MAX_TRACES = 1e6;
 const MAX_TRACERS = 1e2;
 
 class Tracer {
-  static serialize(object) {
-    return JSON.parse(JSON.stringify(object));
-  }
-
   static addTracer(className, title) {
     const key = `${this.tracerCount++}-${className}-${title}`;
     const method = 'construct';
@@ -18,7 +14,7 @@ class Tracer {
     const trace = {
       tracerKey,
       method,
-      args: this.serialize(args.map(arg => arg instanceof Tracer ? arg.key : arg)),
+      args: JSON.parse(JSON.stringify(args)),
     };
     this.traces.push(trace);
     if (this.traces.length > MAX_TRACES) throw new Error('Traces Limit Exceeded');
@@ -37,7 +33,7 @@ class Tracer {
   register(...functions) {
     for (const func of functions) {
       this[func] = (...args) => {
-        Tracer.addTrace(this.key, func, args);
+        Tracer.addTrace(this.key, func, args.map(arg => arg instanceof Tracer ? arg.key : arg));
         return this;
       };
     }

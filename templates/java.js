@@ -1,8 +1,6 @@
 import { java } from '../config';
 
 java.spec(tracer => {
-  const methodNames = [...new Set(tracer.methods.map(method => method.name))];
-
   const name = `${tracer.name}.java`;
   const content = `package org.algorithm_visualizer.tracers;
 
@@ -14,11 +12,19 @@ public class ${tracer.name} extends Tracer {
     public ${tracer.name}() {
         this(null);
     }
-${methodNames.map(methodName => `
-    public ${tracer.name} ${methodName}(Object... args) {
-        addTrace(key, "${methodName}", args);
+${tracer.methods.filter(method => method.return !== 'new').map(method => {
+    const optionals = method.arguments.filter(argument => argument.default);
+    const definitions = [];
+    for (let i = 0; i <= optionals.length; i++) {
+      const args = method.arguments.slice(0, method.arguments.length - i);
+      definitions.push(`
+    public ${method.return} ${method.name}(${args.map(argument => `${argument.type.startsWith('Object[]') ? 'Object' : argument.type} ${argument.name}`).join(', ')}) {
+        addTrace(key, "${method.name}", new Object[]{${args.map(argument => argument.type.endsWith('Tracer') ? `${argument.name}.key` : argument.name).join(', ')}});
         return this;
-    }`).join('\n')}
+    }`);
+    }
+    return definitions.join('\n');
+  }).join('\n')}
 }`;
 
   return { name, content };

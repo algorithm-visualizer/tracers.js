@@ -41,7 +41,7 @@ export const java = {
   ...common,
   cwd: path.resolve(__dirname, 'languages/java'),
   srcPath: 'src/main/java/org/algorithm_visualizer/tracers',
-  buildPath: 'build/libs/tracers-2.0-all.jar',
+  buildPath: 'build/libs/tracers-all.jar',
   releaseFileName: 'java.jar',
   buildCommand: './gradlew shadowJar',
 };
