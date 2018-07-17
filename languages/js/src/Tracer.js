@@ -1,4 +1,5 @@
-import { MAX_TRACERS, MAX_TRACES } from '../../../env';
+const MAX_TRACES = 1e6;
+const MAX_TRACERS = 1e2;
 
 class Tracer {
   static serialize(object) {

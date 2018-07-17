@@ -9,7 +9,7 @@ module.exports = [{
   target: 'web',
   entry: path.resolve(srcPath, 'worker'),
   resolve: {
-    modules: [srcPath],
+    modules: [path.resolve(__dirname, 'node_modules')],
     extensions: ['.js'],
   },
   output: {
