@@ -19,6 +19,10 @@ export default ${tracer.name};`;
   return { name, content };
 }).index(tracers => {
   const name = 'index.js';
-  const content = [{ name: 'Tracer' }, ...tracers].map(tracer => `export { default as ${tracer.name} } from './${tracer.name}';`).join('\n');
+  const content = [
+    { name: 'Tracer' },
+    ...tracers,
+    { name: 'Randomize' },
+  ].map(tracer => `export { default as ${tracer.name} } from './${tracer.name}';`).join('\n');
   return { name, content };
 }).build();
