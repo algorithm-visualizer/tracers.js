@@ -60,6 +60,13 @@ class Commanders {
   }
 }
 
+export const cppCommander = new Commanders({
+  name: 'cpp',
+  srcDir: 'src',
+  buildDir: 'build/out',
+  buildCommand: 'mkdir -p build && cd build && cmake .. && make && cd ../ && mkdir -p build/out/include && cp src/*.h build/out/include',
+});
+
 export const docsCommander = new Commanders({
   name: 'docs',
   srcDir: 'src',

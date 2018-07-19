@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "description": "Tracer Generator for Algorithm Visualizer",
   "scripts": {
-    "build": "npm run build:docs && npm run build:java && npm run build:js",
+    "build": "npm run build:cpp && npm run build:docs && npm run build:java && npm run build:js",
+    "build:cpp": "./node_modules/.bin/babel-node builders/cpp.js",
     "build:docs": "./node_modules/.bin/babel-node builders/docs.js",
     "build:java": "./node_modules/.bin/babel-node builders/java.js",
     "build:js": "./node_modules/.bin/babel-node builders/js.js",
