@@ -1,5 +1,6 @@
 import { docs } from '../config';
 
+// TODO: consider writing in typescript
 docs.spec(tracer => {
   const name = `${tracer.name}.md`;
   const content = `# ${tracer.name}
