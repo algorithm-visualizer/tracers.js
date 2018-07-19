@@ -1,7 +1,7 @@
-import { docs } from '../config';
+import { docsCommander } from '../commanders';
 
 // TODO: consider writing in typescript
-docs.spec(tracer => {
+docsCommander.spec(tracer => {
   const name = `${tracer.name}.md`;
   const content = `# ${tracer.name}
 
@@ -30,4 +30,4 @@ ${tracer.description} [Usage](https://github.com/search?q=${tracer.name}+repo%3A
 </table>`;
 
   return { name, content };
-}, true);
+}, true).build();

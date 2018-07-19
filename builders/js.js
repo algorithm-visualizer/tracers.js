@@ -1,6 +1,6 @@
-import { js } from '../config';
+import { jsCommander } from '../commanders';
 
-js.spec(tracer => {
+jsCommander.spec(tracer => {
   const methodNames = [...new Set(tracer.methods.map(method => method.name))];
 
   const name = `${tracer.name}.js`;

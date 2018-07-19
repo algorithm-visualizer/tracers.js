@@ -1,6 +1,6 @@
-import { java } from '../config';
+import { javaCommander } from '../commanders';
 
-java.spec(tracer => {
+javaCommander.spec(tracer => {
   const name = `${tracer.name}.java`;
   const content = `package org.algorithm_visualizer.tracers;
 

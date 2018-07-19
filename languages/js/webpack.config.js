@@ -14,7 +14,7 @@ module.exports = [{
   },
   output: {
     path: buildPath,
-    filename: 'index.js',
+    filename: 'tracers.js',
   },
   module: {
     rules: [
