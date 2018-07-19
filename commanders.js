@@ -5,11 +5,11 @@ import * as tracers from './specs/tracers';
 import * as randomizers from './specs/randomizers';
 
 class Commanders {
-  constructor({ name, srcDir, buildDir, buildCommand }) {
+  constructor({ name, srcDir, buildDir, buildCommands }) {
     this.name = name;
     this.srcDir = srcDir;
     this.buildDir = buildDir;
-    this.buildCommand = buildCommand;
+    this.buildCommands = buildCommands;
   }
 
   get cwd() {
@@ -47,7 +47,7 @@ class Commanders {
   build() {
     fs.removeSync(this.buildPath);
     fs.removeSync(this.libPath);
-    const buildProcess = child_process.exec(this.buildCommand, { cwd: this.cwd });
+    const buildProcess = child_process.exec(this.buildCommands.join(' && '), { cwd: this.cwd });
     buildProcess.stdout.pipe(process.stdout);
     buildProcess.stderr.pipe(process.stderr);
     buildProcess.on('exit', code => {
@@ -64,26 +64,41 @@ export const cppCommander = new Commanders({
   name: 'cpp',
   srcDir: 'src',
   buildDir: 'build/out',
-  buildCommand: 'mkdir -p build && cd build && cmake .. && make && cd ../ && mkdir -p build/out/include && cp src/*.h build/out/include',
+  buildCommands: [
+    'mkdir -p build',
+    'cd build',
+    'cmake ..',
+    'make',
+    'mkdir -p out/include',
+    'cp ../src/*.h out/include',
+  ],
 });
 
 export const docsCommander = new Commanders({
   name: 'docs',
   srcDir: 'src',
   buildDir: 'build',
-  buildCommand: 'mkdir -p build && cp src/* build',
+  buildCommands: [
+    'mkdir -p build',
+    'cp src/* build',
+  ],
 });
 
 export const javaCommander = new Commanders({
   name: 'java',
   srcDir: 'src/main/java/org/algorithm_visualizer/tracers',
   buildDir: 'build/libs',
-  buildCommand: './gradlew shadowJar',
+  buildCommands: [
+    './gradlew shadowJar',
+  ],
 });
 
 export const jsCommander = new Commanders({
   name: 'js',
   srcDir: 'src',
   buildDir: 'build',
-  buildCommand: 'npm install && npm run build',
+  buildCommands: [
+    'npm install',
+    'npm run build',
+  ],
 });
