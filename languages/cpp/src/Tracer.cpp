@@ -35,5 +35,9 @@ void Tracer::onExit() {
     cout << traces.dump(2);
 }
 
-int registered = atexit(Tracer::onExit);
-//TODO: add randomizer
+int init() {
+    atexit(Tracer::onExit);
+    return 0;
+}
+
+int _ = init();

@@ -55,7 +55,7 @@ project(tracers)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_library(tracers Tracer.cpp Tracer.h ${tracers.map(tracer => `${tracer.name}.cpp ${tracer.name}.h`).join(' ')})
+add_library(tracers Randomize.h Tracer.cpp Tracer.h ${tracers.map(tracer => `${tracer.name}.cpp ${tracer.name}.h`).join(' ')})
 
 set_target_properties(tracers
     PROPERTIES

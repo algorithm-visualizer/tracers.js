@@ -2,12 +2,13 @@
 #define CPP_TRACER_H
 
 #include <string>
-#include "../include/json.hpp"
-
-using namespace std;
-using json = nlohmann::json;
+#include "json.hpp"
 
 class Tracer {
+protected:
+    using string = std::string;
+    using json = nlohmann::json;
+
 private:
     static int tracerCount;
     static json traces;
