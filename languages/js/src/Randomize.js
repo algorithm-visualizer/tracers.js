@@ -12,7 +12,19 @@ class Integer extends Randomizer {
   }
 
   create() {
-    return (Math.random() * (this._max - this._min + 1) | 0) + this._min;
+    return Math.random() * (this._max - this._min + 1) + this._min | 0;
+  }
+}
+
+class Double extends Randomizer {
+  constructor(min = 0, max = 1) {
+    super();
+    this._min = min;
+    this._max = max;
+  }
+
+  create() {
+    return Math.random() * (this._max - this._min) + this._min;
   }
 }
 

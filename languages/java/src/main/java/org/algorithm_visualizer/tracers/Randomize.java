@@ -41,6 +41,34 @@ public abstract class Randomize {
         }
     }
 
+    public static class Double extends Randomizer {
+        @Override
+        protected Class getType() {
+            return java.lang.Double.class;
+        }
+
+        private double _min;
+        private double _max;
+
+        public Double(double min, double max) {
+            _min = min;
+            _max = max;
+        }
+
+        public Double(double min) {
+            this(min, 1);
+        }
+
+        public Double() {
+            this(0);
+        }
+
+        @Override
+        public java.lang.Double create() {
+            return random.nextDouble() * (_max - _min) + _min;
+        }
+    }
+
     public static class String extends Randomizer {
         @Override
         protected Class getType() {
