@@ -16,7 +16,7 @@ ${tracer.methods.filter(method => method.return !== 'new').map(method => {
     for (let i = 0; i <= optionals.length; i++) {
       const args = method.arguments.slice(0, method.arguments.length - i);
       definitions.push(`
-    ${method.return} *${method.name}(${args.map(argument => `json ${argument.name}`).join(', ')});`);
+    ${method.return} ${method.name}(${args.map(argument => `json ${argument.name}`).join(', ')});`);
     }
     return definitions.join('\n');
   }).join('\n')}
@@ -38,9 +38,9 @@ ${tracer.methods.filter(method => method.return !== 'new').map(method => {
     for (let i = 0; i <= optionals.length; i++) {
       const args = method.arguments.slice(0, method.arguments.length - i);
       definitions.push(`
-${tracer.name} *${tracer.name}::${method.name}(${args.map(argument => `json ${argument.name}`).join(', ')}) {
+${tracer.name} ${tracer.name}::${method.name}(${args.map(argument => `json ${argument.name}`).join(', ')}) {
     addTrace(key, "${method.name}", json::array({${args.map(argument => argument.name).join(', ')}}));
-    return this;
+    return *this;
 }`);
     }
     return definitions.join('\n');
@@ -55,7 +55,7 @@ project(tracers)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_library(tracers Randomize.h Tracer.cpp Tracer.h ${tracers.map(tracer => `${tracer.name}.cpp ${tracer.name}.h`).join(' ')})
+add_library(tracers Tracer.cpp ${tracers.map(tracer => `${tracer.name}.cpp`).join(' ')})
 
 set_target_properties(tracers
     PROPERTIES

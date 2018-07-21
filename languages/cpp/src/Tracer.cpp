@@ -1,5 +1,5 @@
 #include <string>
-#include <iostream>
+#include <fstream>
 #include <json.hpp>
 #include "Tracer.h"
 
@@ -32,7 +32,9 @@ Tracer::Tracer(string className, string title) {
 }
 
 void Tracer::onExit() {
-    cout << traces.dump(2);
+    ofstream fout("traces.json");
+    fout << traces.dump();
+    fout.close();
 }
 
 int init() {
