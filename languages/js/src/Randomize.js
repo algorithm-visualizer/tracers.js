@@ -104,18 +104,17 @@ class Graph extends Randomizer {
 
   create() {
     const G = new Array(this._N);
-    for (let i = 0; i < this._N; i++) G[i] = new Array(this._N);
     for (let i = 0; i < this._N; i++) {
-      G[i][i] = 0;
-      const value = Math.random() < this._ratio ? this._weighted ? this._randomizer.create() : 1 : 0;
-      if (this._directed) {
-        for (let j = 0; j < this._N; j++) {
-          if (i === j) continue;
-          G[i][j] = value;
-        }
-      } else {
-        for (let j = 0; j < i; j++) {
-          G[i][j] = G[j][i] = value;
+      G[i] = new Array(this._N);
+    }
+    for (let i = 0; i < this._N; i++) {
+      for (let j = 0; j < this._N; j++) {
+        if (i === j) {
+          G[i][j] = 0;
+        } else if (this._directed || i < j) {
+          G[i][j] = Math.random() < this._ratio ? this._weighted ? this._randomizer.create() : 1 : 0;
+        } else {
+          G[i][j] = G[j][i];
         }
       }
     }

@@ -185,16 +185,13 @@ namespace Randomize {
             }
             Double ratioRandomizer;
             for (int i = 0; i < _N; i++) {
-                G[i][i] = 0;
-                T value = ratioRandomizer.create() < _ratio ? _weighted ? (*_randomizer).create() : 1 : 0;
-                if (_directed) {
-                    for (int j = 0; j < _N; j++) {
-                        if (i == j) continue;
-                        G[i][j] = value;
-                    }
-                } else {
-                    for (int j = 0; j < i; j++) {
-                        G[i][j] = G[j][i] = value;
+                for (int j = 0; j < _N; j++) {
+                    if (i == j) {
+                        G[i][j] = 0;
+                    } else if (_directed || i < j) {
+                        G[i][j] = ratioRandomizer.create() < _ratio ? _weighted ? (*_randomizer).create() : 1 : 0;
+                    } else {
+                        G[i][j] = G[j][i];
                     }
                 }
             }
