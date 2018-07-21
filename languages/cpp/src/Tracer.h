@@ -2,7 +2,7 @@
 #define CPP_TRACER_H
 
 #include <string>
-#include "json.hpp"
+#include <json.hpp>
 
 class Tracer {
 protected:
@@ -13,7 +13,7 @@ private:
     static int tracerCount;
     static json traces;
 
-    static const int maxTraces = 1000000;
+    static const int maxTraces = 1000000; // TODO: load from environment variables
     static const int maxTracers = 100;
 
     static string addTracer(string className, string title);

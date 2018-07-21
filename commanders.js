@@ -70,7 +70,7 @@ export const cppCommander = new Commanders({
     'cmake ..',
     'make',
     'mkdir -p out/include',
-    'cp ../src/*.h out/include',
+    'cp ../include/* ../src/*.h out/include',
   ],
 });
 
