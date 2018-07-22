@@ -1,5 +1,6 @@
 #include <string>
 #include <fstream>
+#include <cstdlib>
 #include <json.hpp>
 #include "Tracer.h"
 
@@ -8,6 +9,9 @@ using json = nlohmann::json;
 
 int Tracer::tracerCount = 0;
 json Tracer::traces = json::array();
+
+const long Tracer::maxTraces = stol(getenv("MAX_TRACES"));
+const long Tracer::maxTracers = stol(getenv("MAX_TRACERS"));
 
 string Tracer::addTracer(string className, string title) {
     string key = to_string(tracerCount++) + "-" + className + "-" + title;

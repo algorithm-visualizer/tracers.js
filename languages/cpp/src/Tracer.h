@@ -13,8 +13,8 @@ private:
     static int tracerCount;
     static json traces;
 
-    static const int maxTraces = 1000000; // TODO: load from environment variables
-    static const int maxTracers = 100;
+    static const long maxTraces;
+    static const long maxTracers;
 
     static string addTracer(string className, string title);
 

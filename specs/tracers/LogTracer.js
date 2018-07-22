@@ -26,7 +26,7 @@ export default {
     return: 'LogTracer',
     arguments: [],
   }, {
-    name: 'print',
+    name: 'print', // TODO: separate into println and print methods
     description: 'Print `message`.',
     return: 'LogTracer',
     arguments: [

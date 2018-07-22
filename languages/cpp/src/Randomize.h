@@ -139,6 +139,7 @@ namespace Randomize {
             return *this;
         }
 
+        // TODO: fix array1d/2d/graph randomizers returning pointer instead of array
         T *create() {
             T *D = new T[_N];
             for (int i = 0; i < _N; i++) {
