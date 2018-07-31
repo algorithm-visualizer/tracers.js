@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.0.1]
+### Added
+- Dockerize the building process.
+
+### Changed
+- Change the project structure.
+
 ## [2.0.0]
 ### Added
 - Tracers for Java and C++.
