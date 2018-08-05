@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.0.2]
+### Fixed
+- Build executer's Docker images only when building tracers libraries
+
 ## [2.0.1]
 ### Added
 - Dockerize the building process.

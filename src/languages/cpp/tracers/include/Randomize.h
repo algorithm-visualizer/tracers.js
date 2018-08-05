@@ -14,8 +14,7 @@ namespace Randomize {
         Randomizer() {
         }
 
-        virtual T create() {
-        }
+        virtual T create() = 0;
     };
 
 

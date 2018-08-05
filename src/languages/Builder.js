@@ -1,19 +1,15 @@
 import path from 'path';
 import fs from 'fs-extra';
-import Promise from 'bluebird';
 import * as tracers from '/specs/tracers';
 import * as randomizers from '/specs/randomizers';
 import { execute } from '/common/util';
+import Commander from '/languages/Commander';
 
-class Builder {
+class Builder extends Commander {
   constructor({ name, commands }) {
-    this.name = name;
+    super({ name });
     this.commands = commands;
     this.build = this.build.bind(this);
-  }
-
-  get cwd() {
-    return path.resolve(__dirname, this.name);
   }
 
   spec(callback, all = false) {
@@ -33,23 +29,25 @@ class Builder {
   }
 
   build() {
-    const command = this.commands.join(' && ');
-    if (fs.existsSync(path.resolve(this.cwd, 'builder', 'Dockerfile'))) {
-      const imageTag = `${this.name}-builder`;
-      return execute(`docker build -t ${imageTag} ./builder`, this.cwd)
-        .then(() => execute([
-          `docker run --rm`,
-          '-w=/usr/tracers',
-          `-v=$PWD/tracers:/usr/tracers:rw`,
-          imageTag,
-          '/bin/bash -c',
-          `"${command}"`,
-        ].join(' '), this.cwd));
-    } else if (command) {
-      return execute(command, path.resolve(this.cwd, 'tracers'));
-    } else {
-      return Promise.resolve();
-    }
+    return fs.pathExists(path.resolve(this.cwd, 'builder', 'Dockerfile'))
+      .then(exists => {
+        const command = this.commands.join(' && ');
+        if (exists) {
+          return execute(`docker build -t ${this.builderImageTag} ./builder`, this.cwd)
+            .then(() => execute([
+              `docker run --rm`,
+              '-w=/usr/tracers',
+              `-v=$PWD/tracers:/usr/tracers:rw`,
+              this.builderImageTag,
+              '/bin/bash -c',
+              `"${command}"`,
+            ].join(' '), this.cwd));
+        } else if (command) {
+          return execute(command, path.resolve(this.cwd, 'tracers'));
+        }
+      })
+      .then(() => fs.pathExists(path.resolve(this.cwd, 'executer', 'Dockerfile')))
+      .then(exists => exists && execute(`docker build -t ${this.executerImageTag} ./executer`, this.cwd));
   }
 }
 
