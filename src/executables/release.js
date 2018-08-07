@@ -1,15 +1,17 @@
-import child_process from 'child_process';
 import ghRelease from 'gh-release';
+import Promise from 'bluebird';
 import { version } from '/package.json';
+import { execute } from '/common/util';
 
 const { GITHUB_TOKEN } = process.env;
-ghRelease({
-  owner: 'algorithm-visualizer',
-  repo: 'tracers',
-  auth: { token: GITHUB_TOKEN },
-}, err => {
-  if (err) throw err;
-  const docsProcess = child_process.exec([
+const release = Promise.promisify(ghRelease);
+
+release({ owner: 'algorithm-visualizer', repo: 'tracers', auth: { token: GITHUB_TOKEN } })
+  .catch(error => {
+    console.error(error);
+    throw error;
+  })
+  .then(() => execute([
     'rm -rf tracers.wiki',
     'git clone git@github.com:algorithm-visualizer/tracers.wiki.git',
     'rm tracers.wiki/*',
@@ -20,8 +22,5 @@ ghRelease({
     'git push origin master',
     'cd ..',
     'rm -rf tracers.wiki',
-  ].join(' && '), { cwd: __dirname });
-  docsProcess.stdout.pipe(process.stdout);
-  docsProcess.stderr.pipe(process.stderr);
-  docsProcess.on('exit', process.exit);
-});
+  ].join(' && '), __dirname))
+  .catch(() => process.exit(1));
