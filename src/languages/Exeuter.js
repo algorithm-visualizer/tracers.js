@@ -1,5 +1,6 @@
 import { execute } from '/common/util';
 import Commander from '/languages/Commander';
+import { maxTracers, maxTraces } from '/common/config';
 
 class Executer extends Commander {
   constructor({ name, compileCommand, runCommand }) {
@@ -17,7 +18,7 @@ class Executer extends Commander {
       '-w=/usr/judge',
       `-v=$PWD/tracers:/usr/bin/tracers:ro`,
       `-v=${tempPath}:/usr/judge:rw`,
-      `-e MAX_TRACES=${1e6} -e MAX_TRACERS=${1e2}`, // TODO: load from /common/config
+      `-e MAX_TRACES=${maxTraces} -e MAX_TRACERS=${maxTracers}`,
       this.executerImageTag,
       '/bin/bash -c',
       `"${command}"`,
