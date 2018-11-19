@@ -1,16 +1,19 @@
 import Promise from 'bluebird';
 import child_process from 'child_process';
 
-const execute = (command, cwd, { stdout = process.stdout, stderr = process.stderr } = {}) => new Promise((resolve, reject) => {
+const execute = (command, cwd) => new Promise((resolve, reject) => {
   if (!cwd) return reject(new Error('CWD Not Specified'));
-  const child = child_process.exec(command, { cwd }, (error, stdout, stderr) => {
-    if (error) return reject(error.code ? new Error(stderr) : error);
-    resolve(stdout);
+  const child = child_process.exec(command, { cwd }, error => {
+    if (error) return reject(error);
+    resolve();
   });
-  if (stdout) child.stdout.pipe(stdout);
-  if (stderr) child.stderr.pipe(stderr);
+  child.stdout.pipe(process.stdout);
+  child.stderr.pipe(process.stderr);
 });
+
+const exit = error => process.exit(1);
 
 export {
   execute,
+  exit,
 };

@@ -1,7 +1,7 @@
 import ghRelease from 'gh-release';
 import Promise from 'bluebird';
 import { version } from '/package.json';
-import { execute } from '/common/util';
+import { execute, exit } from '/common/util';
 
 const { GITHUB_TOKEN } = process.env;
 const release = Promise.promisify(ghRelease);
@@ -23,4 +23,4 @@ release({ owner: 'algorithm-visualizer', repo: 'tracers', auth: { token: GITHUB_
     'cd ..',
     'rm -rf tracers.wiki',
   ].join(' && '), __dirname))
-  .catch(() => process.exit(1));
+  .catch(exit);

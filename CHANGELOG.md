@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.0.5]
+### Added
+- Add memory/time limits
+
 ## [2.0.4]
 ### Fixed
 - Load limits from /common/config

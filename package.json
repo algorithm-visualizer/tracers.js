@@ -1,6 +1,6 @@
 {
   "name": "@algorithm-visualizer/tracer-generator",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Visualization Libraries for Algorithm Visualizer",
   "scripts": {
     "build": "node ./node_modules/webpack/bin/webpack --bail --progress --config webpack.config.js && chmod +x ./bin/*"
@@ -25,6 +25,7 @@
     "fs-extra": "^7.0.0",
     "gh-release": "^3.2.1",
     "uglifyjs-webpack-plugin": "^1.2.7",
+    "uuid": "^3.3.2",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
     "webpack-node-externals": "^1.7.2"

@@ -1,6 +1,7 @@
 import { execute } from '/common/util';
 import Commander from '/languages/Commander';
-import { maxTracers, maxTraces } from '/common/config';
+import { maxTracers, maxTraces, memoryLimit, timeLimit } from '/common/config';
+import uuid from 'uuid';
 
 class Executer extends Commander {
   constructor({ name, compileCommand, runCommand }) {
@@ -12,17 +13,30 @@ class Executer extends Commander {
   }
 
   execute(tempPath, command) {
-    // TODO: memory limit + time limit + space limit?
+    const containerName = uuid.v4();
+    let timer = setTimeout(() => {
+      timer = null;
+      execute(`docker kill ${containerName}`, this.cwd);
+    }, timeLimit);
     return execute([
       `docker run --rm`,
+      `--name=${containerName}`,
       '-w=/usr/judge',
       `-v=$PWD/tracers:/usr/bin/tracers:ro`,
       `-v=${tempPath}:/usr/judge:rw`,
+      `-m=${memoryLimit}m --memory-swap=${memoryLimit}m`, // TODO: needs to be tested on linux
       `-e MAX_TRACES=${maxTraces} -e MAX_TRACERS=${maxTracers}`,
       this.executerImageTag,
       '/bin/bash -c',
       `"${command}"`,
-    ].join(' '), this.cwd);
+    ].join(' '), this.cwd).catch(error => {
+      if (timer) {
+        clearTimeout(timer);
+      } else {
+        console.error('Time Limit Exceeded');
+      }
+      throw error;
+    });
   }
 
   compile(tempPath) {
