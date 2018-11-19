@@ -15,7 +15,7 @@ release({ owner: 'algorithm-visualizer', repo: 'tracers', auth: { token: GITHUB_
     'rm -rf tracers.wiki',
     'git clone git@github.com:algorithm-visualizer/tracers.wiki.git',
     'rm tracers.wiki/*',
-    'cp ../languages/docs/tracers/* tracers.wiki',
+    '../../bin/docs tracers.wiki',
     'cd tracers.wiki',
     'git add .',
     `git diff-index --quiet HEAD || git commit -m 'Release v${version}'`,

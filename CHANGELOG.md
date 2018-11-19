@@ -7,20 +7,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ## [2.0.5]
+### Changed
+- Build tracers from skeletons.
+- Build docs separately from tracers.
+
+## [2.0.5]
 ### Added
-- Add memory/time limits
+- Add memory/time limits.
 
 ## [2.0.4]
 ### Fixed
-- Load limits from /common/config
+- Load limits from /common/config.
 
 ## [2.0.3]
 ### Fixed
-- Handle unhandled promise rejections
+- Handle unhandled promise rejections.
 
 ## [2.0.2]
 ### Fixed
-- Build executer's Docker images only when building tracers libraries
+- Build executer's Docker images only when building tracers libraries.
 
 ## [2.0.1]
 ### Added

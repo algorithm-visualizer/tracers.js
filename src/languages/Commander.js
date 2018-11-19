@@ -4,7 +4,7 @@ class Commander {
   constructor({ name }) {
     this.name = name;
     this.builderImageTag = `${this.name}-builder`;
-    this.executerImageTag = `${this.name}-executer`;
+    this.executorImageTag = `${this.name}-executor`;
   }
 
   get cwd() {

@@ -3,7 +3,7 @@ import Commander from '/languages/Commander';
 import { maxTracers, maxTraces, memoryLimit, timeLimit } from '/common/config';
 import uuid from 'uuid';
 
-class Executer extends Commander {
+class Executor extends Commander {
   constructor({ name, compileCommand, runCommand }) {
     super({ name });
     this.compileCommand = compileCommand;
@@ -26,7 +26,7 @@ class Executer extends Commander {
       `-v=${tempPath}:/usr/judge:rw`,
       `-m=${memoryLimit}m --memory-swap=${memoryLimit}m`, // TODO: needs to be tested on linux
       `-e MAX_TRACES=${maxTraces} -e MAX_TRACERS=${maxTracers}`,
-      this.executerImageTag,
+      this.executorImageTag,
       '/bin/bash -c',
       `"${command}"`,
     ].join(' '), this.cwd).catch(error => {
@@ -48,4 +48,4 @@ class Executer extends Commander {
   }
 }
 
-export default Executer;
+export default Executor;

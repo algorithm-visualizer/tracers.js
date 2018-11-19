@@ -1,10 +1,12 @@
-import Builder from '../../Builder';
+import * as tracers from '/specs/tracers';
+import * as randomizers from '/specs/randomizers';
+import path from 'path';
+import fs from 'fs-extra';
 
-// TODO: consider writing in typescript
-const builder = new Builder({
-  name: 'docs',
-  commands: [],
-}).spec(tracer => {
+const [, , docsPath = path.resolve(__dirname, '..', '..', 'docs')] = process.argv;
+
+fs.ensureDirSync(docsPath);
+for (const tracer of Object.values({ ...tracers, ...randomizers })) {
   const name = `${tracer.name}.md`;
   const content = `# ${tracer.name}
 
@@ -32,7 +34,5 @@ ${tracer.description} [Usage](https://github.com/search?q=${tracer.name}+repo%3A
   </tbody>
 </table>`;
 
-  return { name, content };
-}, true);
-
-export default builder;
+  fs.writeFileSync(path.resolve(docsPath, name), content);
+}

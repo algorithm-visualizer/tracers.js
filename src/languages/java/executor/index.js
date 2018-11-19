@@ -1,9 +1,9 @@
-import Executer from '../../Exeuter';
+import Executor from '../../Exeutor';
 
-const executer = new Executer({
+const executor = new Executor({
   name: 'java',
   compileCommand: 'javac -cp /usr/bin/tracers/build/libs/tracers.jar Main.java',
   runCommand: 'java -cp /usr/bin/tracers/build/libs/tracers.jar:. Main',
 });
 
-export default executer;
+export default executor;

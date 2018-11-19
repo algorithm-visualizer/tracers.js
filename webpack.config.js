@@ -6,6 +6,7 @@ const webpack = require('webpack');
 
 const buildPath = path.resolve(__dirname, 'bin');
 const srcPath = path.resolve(__dirname, 'src');
+const executablesPath = path.resolve(srcPath, 'executables');
 
 const alias = {
   '/package.json': path.resolve(__dirname, 'package.json'),
@@ -14,18 +15,18 @@ fs.readdirSync(srcPath).forEach(name => {
   alias['/' + name] = path.resolve(srcPath, name);
 });
 
+const entry = {};
+fs.readdirSync(executablesPath).forEach(name => {
+  const [, executable] = /^(\w+)\.js$/.exec(name);
+  entry[executable] = path.resolve(executablesPath, name);
+});
+
 module.exports = {
   target: 'node',
   node: {
     __dirname: true,
   },
-  entry: {
-    build: path.resolve(srcPath, 'executables', 'build.js'),
-
-    compile: path.resolve(srcPath, 'executables', 'compile.js'),
-    release: path.resolve(srcPath, 'executables', 'release.js'),
-    run: path.resolve(srcPath, 'executables', 'run.js'),
-  },
+  entry,
   externals: [nodeExternals()],
   resolve: {
     modules: [srcPath],

@@ -1,8 +1,8 @@
 import builder from './builder';
-import executer from './executer';
+import executor from './executor';
 
 export default {
   build: builder.build,
-  compile: executer.compile,
-  run: executer.run,
+  compile: executor.compile,
+  run: executor.run,
 };
