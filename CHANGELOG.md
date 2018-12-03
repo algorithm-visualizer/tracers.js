@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [2.0.6]
 ### Added
 - Add fill methods in C++ Array1D/Array2D/Graph Randomizers.
+- Add updateNode(), removeNode(), updateEdge(), and removeEdge() in GraphTracer.
 
 ### Changed
 - Improve catching time limit exceeded.
+- Change the order of arguments of addNode() in GraphTracer.
 
 ## [2.0.5]
 ### Changed

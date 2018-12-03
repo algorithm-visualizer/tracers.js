@@ -46,10 +46,29 @@ export default {
     arguments: [
       { name: 'id', type: 'Object' },
       { name: 'weight', type: 'double', default: 'null' },
-      { name: 'visitedCount', type: 'int', default: '0' },
-      { name: 'selectedCount', type: 'int', default: '0' },
       { name: 'x', type: 'double', default: '0' },
       { name: 'y', type: 'double', default: '0' },
+      { name: 'visitedCount', type: 'int', default: '0' },
+      { name: 'selectedCount', type: 'int', default: '0' },
+    ],
+  }, {
+    name: 'updateNode',
+    description: 'Update a node.',
+    return: 'GraphTracer',
+    arguments: [
+      { name: 'id', type: 'Object' },
+      { name: 'weight', type: 'double', default: 'undefined' },
+      { name: 'x', type: 'double', default: 'undefined' },
+      { name: 'y', type: 'double', default: 'undefined' },
+      { name: 'visitedCount', type: 'int', default: 'undefined' },
+      { name: 'selectedCount', type: 'int', default: 'undefined' },
+    ],
+  }, {
+    name: 'removeNode',
+    description: 'Remove a node.',
+    return: 'GraphTracer',
+    arguments: [
+      { name: 'id', type: 'Object' },
     ],
   }, {
     name: 'addEdge',
@@ -61,6 +80,25 @@ export default {
       { name: 'weight', type: 'double', default: 'null' },
       { name: 'visitedCount', type: 'int', default: '0' },
       { name: 'selectedCount', type: 'int', default: '0' },
+    ],
+  }, {
+    name: 'updateEdge',
+    description: 'Update an edge connecting from `source` to `target`.',
+    return: 'GraphTracer',
+    arguments: [
+      { name: 'source', type: 'Object' },
+      { name: 'target', type: 'Object' },
+      { name: 'weight', type: 'double', default: 'undefined' },
+      { name: 'visitedCount', type: 'int', default: 'undefined' },
+      { name: 'selectedCount', type: 'int', default: 'undefined' },
+    ],
+  }, {
+    name: 'removeEdge',
+    description: 'Remove an edge connecting from `source` to `target`.',
+    return: 'GraphTracer',
+    arguments: [
+      { name: 'source', type: 'Object' },
+      { name: 'target', type: 'Object' },
     ],
   }, {
     name: 'layoutCircle',
@@ -87,7 +125,7 @@ export default {
     arguments: [
       { name: 'target', type: 'Object' },
       { name: 'source', type: 'Object', default: 'null' },
-      { name: 'weight', type: 'double', default: 'null' },
+      { name: 'weight', type: 'double', default: 'undefined' },
     ],
   }, {
     name: 'leave',
@@ -96,7 +134,7 @@ export default {
     arguments: [
       { name: 'target', type: 'Object' },
       { name: 'source', type: 'Object', default: 'null' },
-      { name: 'weight', type: 'double', default: 'null' },
+      { name: 'weight', type: 'double', default: 'undefined' },
     ],
   }, {
     name: 'select',
