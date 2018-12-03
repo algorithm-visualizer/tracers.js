@@ -1,17 +1,22 @@
 #include <string>
 #include <iostream>
-#include "LogTracer.h"
 #include "GraphTracer.h"
 #include "Randomize.h"
 
+#define N 5
+
 using namespace std;
-using namespace Randomize;
 
 int main() {
-    int N = 5;
-    int **graph = Graph<int>(N, .5, *(new Integer(1, 5))).weighted(true).directed(false).create();
+    int array[N][N];
+    Randomize::Graph<int>(N, 1, *(new Randomize::Integer(1, 9))).weighted().directed(false).fill(&array[0][0]);
     GraphTracer graphTracer;
-    int arr[][2] = {{0, 1}, {1, 0}};
-    graphTracer.set(arr);
+    graphTracer.set(array);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            cout << array[i][j] << " ";
+        }
+        cout << endl;
+    }
     return 0;
 }

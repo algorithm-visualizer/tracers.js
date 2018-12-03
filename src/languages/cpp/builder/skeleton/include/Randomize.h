@@ -85,7 +85,7 @@ namespace Randomize {
 
 
     template<class T>
-    class Array2D : public Randomizer<T **> {
+    class Array2D : public Randomizer<void> {
     private:
         int _N;
         int _M;
@@ -105,22 +105,23 @@ namespace Randomize {
             return *this;
         }
 
-        T **create() {
-            T **D = new T *[_N];
+        void create() {
+            throw std::invalid_argument("Call 'void fill(T *D)' instead.");
+        }
+
+        void fill(T *D) {
             for (int i = 0; i < _N; i++) {
-                D[i] = new T[_M];
                 for (int j = 0; j < _M; j++) {
-                    D[i][j] = (*_randomizer).create();
+                    D[i * _M + j] = (*_randomizer).create();
                 }
-                if (_sorted) std::sort(D[i], D[i] + _M);
+                if (_sorted) std::sort(&D[i * _M], &D[i * _M] + _M);
             }
-            return D;
         }
     };
 
 
     template<class T>
-    class Array1D : public Randomizer<T *> {
+    class Array1D : public Randomizer<void> {
     private:
         int _N;
         Randomizer<T> *_randomizer;
@@ -138,20 +139,21 @@ namespace Randomize {
             return *this;
         }
 
-        // TODO: fix array1d/2d/graph randomizers returning pointer instead of array
-        T *create() {
-            T *D = new T[_N];
+        void create() {
+            throw std::invalid_argument("Call 'void fill(T *D)' instead.");
+        }
+
+        void fill(T *D) {
             for (int i = 0; i < _N; i++) {
                 D[i] = (*_randomizer).create();
             }
             if (_sorted) std::sort(D, D + _N);
-            return D;
         }
     };
 
 
     template<class T>
-    class Graph : public Randomizer<T **> {
+    class Graph : public Randomizer<void> {
     private:
         int _N;
         double _ratio;
@@ -178,24 +180,23 @@ namespace Randomize {
             return *this;
         }
 
-        T **create() {
-            T **G = new T *[_N];
-            for (int i = 0; i < _N; i++) {
-                G[i] = new T[_N];
-            }
+        void create() {
+            throw std::invalid_argument("Call 'void fill(T *G)' instead.");
+        }
+
+        void fill(T *G) {
             Double ratioRandomizer;
             for (int i = 0; i < _N; i++) {
                 for (int j = 0; j < _N; j++) {
                     if (i == j) {
-                        G[i][j] = 0;
+                        G[i * _N + j] = 0;
                     } else if (_directed || i < j) {
-                        G[i][j] = ratioRandomizer.create() < _ratio ? _weighted ? (*_randomizer).create() : 1 : 0;
+                        G[i * _N + j] = ratioRandomizer.create() < _ratio ? _weighted ? (*_randomizer).create() : 1 : 0;
                     } else {
-                        G[i][j] = G[j][i];
+                        G[i * _N + j] = G[j * _N + i];
                     }
                 }
             }
-            return G;
         }
     };
 }

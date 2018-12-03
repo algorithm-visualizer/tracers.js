@@ -1,6 +1,6 @@
 {
   "name": "@algorithm-visualizer/tracer-generator",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Visualization Libraries for Algorithm Visualizer",
   "scripts": {
     "build": "node ./node_modules/webpack/bin/webpack --bail --progress --config webpack.config.js && chmod +x ./bin/*"

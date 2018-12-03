@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.0.6]
+### Added
+- Add fill methods in C++ Array1D/Array2D/Graph Randomizers.
+
+### Changed
+- Improve catching time limit exceeded.
+
 ## [2.0.5]
 ### Changed
 - Build tracers from skeletons.
