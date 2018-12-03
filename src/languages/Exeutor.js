@@ -14,9 +14,11 @@ class Executor extends Commander {
 
   execute(tempPath, command) {
     const containerName = uuid.v4();
-    let timer = setTimeout(() => {
-      timer = null;
-      execute(`docker kill ${containerName}`, this.cwd);
+    let killed = false;
+    const timer = setTimeout(() => {
+      execute(`docker kill ${containerName}`, this.cwd).then(() => {
+        killed = true;
+      });
     }, timeLimit);
     return execute([
       `docker run --rm`,
@@ -30,13 +32,9 @@ class Executor extends Commander {
       '/bin/bash -c',
       `"${command}"`,
     ].join(' '), this.cwd).catch(error => {
-      if (timer) {
-        clearTimeout(timer);
-      } else {
-        console.error('Time Limit Exceeded');
-      }
+      if (killed) console.error('Time Limit Exceeded');
       throw error;
-    });
+    }).finally(() => clearTimeout(timer));
   }
 
   compile(tempPath) {
