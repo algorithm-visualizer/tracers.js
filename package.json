@@ -1,33 +1,20 @@
 {
-  "name": "@algorithm-visualizer/tracer-generator",
-  "version": "2.0.6",
-  "description": "Visualization Libraries for Algorithm Visualizer",
+  "name": "algorithm-visualizer",
+  "version": "2.1.0",
+  "description": "JavaScript Tracers for Algorithm Visualizer",
+  "main": "dist/tracers.js",
   "scripts": {
-    "build": "node ./node_modules/webpack/bin/webpack --bail --progress --config webpack.config.js && chmod +x ./bin/*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/algorithm-visualizer/tracers.git"
-  },
-  "author": {
-    "name": "Jinseo Jason Park",
-    "email": "parkjs814@gmail.com",
-    "url": "https://jasonpark.me/"
+    "build": "node ./node_modules/webpack/bin/webpack --bail --progress --config webpack.config.js"
   },
   "license": "MIT",
-  "dependencies": {
-    "babel-cli": "^6.26.0",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
-    "bluebird": "^3.5.1",
     "clean-webpack-plugin": "^0.1.19",
-    "fs-extra": "^7.0.0",
-    "gh-release": "^3.2.1",
     "uglifyjs-webpack-plugin": "^1.2.7",
-    "uuid": "^3.3.2",
     "webpack": "^4.15.1",
-    "webpack-cli": "^3.0.8",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-cli": "^3.0.8"
   }
 }

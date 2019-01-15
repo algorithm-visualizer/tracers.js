@@ -1,4 +1,4 @@
-import { maxTraces, maxTracers } from '../../../../common/config';
+const { maxTraces, maxTracers } = process.env;
 
 class Tracer {
   static addTracer(className, title) {

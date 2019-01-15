@@ -1,41 +1,21 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
-const fs = require('fs');
-const webpack = require('webpack');
 
-const buildPath = path.resolve(__dirname, 'bin');
+const buildPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
-const executablesPath = path.resolve(srcPath, 'executables');
 
-const alias = {
-  '/package.json': path.resolve(__dirname, 'package.json'),
-};
-fs.readdirSync(srcPath).forEach(name => {
-  alias['/' + name] = path.resolve(srcPath, name);
-});
-
-const entry = {};
-fs.readdirSync(executablesPath).forEach(name => {
-  const [, executable] = /^(\w+)\.js$/.exec(name);
-  entry[executable] = path.resolve(executablesPath, name);
-});
-
-module.exports = {
-  target: 'node',
-  node: {
-    __dirname: true,
-  },
-  entry,
-  externals: [nodeExternals()],
+module.exports = [{
+  target: 'web',
+  entry: srcPath,
   resolve: {
-    modules: [srcPath],
+    modules: [path.resolve(__dirname, 'node_modules')],
     extensions: ['.js'],
-    alias,
   },
   output: {
     path: buildPath,
-    filename: '[name]',
+    filename: 'tracers.js',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
@@ -44,7 +24,16 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin([buildPath]),
-    new webpack.BannerPlugin({ banner: '#!/usr/bin/env node', raw: true, entryOnly: true }),
   ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          keep_classnames: true,
+          keep_fnames: true,
+        },
+      }),
+    ],
+  },
   mode: 'production',
-};
+}];
