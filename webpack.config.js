@@ -14,7 +14,8 @@ module.exports = [{
   },
   output: {
     path: buildPath,
-    filename: 'tracers.js',
+    filename: 'algorithm-visualizer.js',
+    library: 'AlgorithmVisualizer',
     libraryTarget: 'umd',
     globalObject: `(typeof self !== 'undefined' ? self : this)`,
   },
