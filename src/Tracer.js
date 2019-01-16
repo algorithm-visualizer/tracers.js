@@ -1,4 +1,5 @@
-const { maxTraces, maxTracers } = process.env;
+const MAX_TRACES = 1000000;
+const MAX_TRACERS = 100;
 
 class Tracer {
   static addTracer(className, title) {
@@ -16,8 +17,8 @@ class Tracer {
       args: JSON.parse(JSON.stringify(args)),
     };
     this.traces.push(trace);
-    if (this.traces.length > maxTraces) throw new Error('Traces Limit Exceeded');
-    if (this.tracerCount > maxTracers) throw new Error('Tracers Limit Exceeded');
+    if (this.traces.length > MAX_TRACES) throw new Error('Traces Limit Exceeded');
+    if (this.tracerCount > MAX_TRACERS) throw new Error('Tracers Limit Exceeded');
   }
 
   constructor(title = this.constructor.name) {
