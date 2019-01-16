@@ -1,10 +1,11 @@
 {
   "name": "algorithm-visualizer",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "description": "JavaScript Tracers for Algorithm Visualizer",
   "main": "dist/tracers.js",
   "scripts": {
-    "build": "node ./node_modules/webpack/bin/webpack --bail --progress --config webpack.config.js"
+    "build": "node ./node_modules/webpack/bin/webpack --bail --progress --config webpack.config.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

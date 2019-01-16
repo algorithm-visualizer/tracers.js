@@ -16,6 +16,7 @@ module.exports = [{
     path: buildPath,
     filename: 'tracers.js',
     libraryTarget: 'umd',
+    globalObject: `(typeof self !== 'undefined' ? self : this)`,
   },
   module: {
     rules: [
