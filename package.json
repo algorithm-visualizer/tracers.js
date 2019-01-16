@@ -6,6 +6,10 @@
   "scripts": {
     "build": "node ./node_modules/webpack/bin/webpack --bail --progress --config webpack.config.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algorithm-visualizer/tracers.js.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.3",
