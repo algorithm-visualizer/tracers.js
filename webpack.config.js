@@ -7,19 +7,17 @@ const buildPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
 
 module.exports = [{
-  target: 'node',
   entry: srcPath,
   externals: [nodeExternals()],
-  resolve: {
-    modules: [path.resolve(__dirname, 'node_modules')],
-    extensions: ['.js'],
-  },
   output: {
     path: buildPath,
     filename: 'algorithm-visualizer.js',
     library: 'AlgorithmVisualizer',
     libraryTarget: 'umd',
     globalObject: `(typeof self !== 'undefined' ? self : this)`,
+  },
+  node: {
+    process: false
   },
   module: {
     rules: [
