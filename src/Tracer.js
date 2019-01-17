@@ -44,8 +44,7 @@ Tracer.tracerCount = 0;
 Tracer.traces = [];
 
 const { ALGORITHM_VISUALIZER } = process.env;
-if (ALGORITHM_VISUALIZER) {
-} else {
+if (!ALGORITHM_VISUALIZER) {
   const axios = require('axios');
   const opn = require('opn');
   process.on('beforeExit', () => {

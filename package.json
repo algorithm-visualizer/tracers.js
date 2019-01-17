@@ -1,7 +1,7 @@
 {
   "name": "algorithm-visualizer",
   "version": "2.1.6",
-  "description": "JavaScript Tracers for Algorithm Visualizer",
+  "description": "Visualization Library for JavaScript",
   "main": "dist/tracers.js",
   "scripts": {
     "build": "node ./node_modules/webpack/bin/webpack --bail --progress --config webpack.config.js",
