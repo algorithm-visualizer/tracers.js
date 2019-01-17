@@ -50,10 +50,9 @@ if (ALGORITHM_VISUALIZER) {
   const opn = require('opn');
   process.on('beforeExit', () => {
     axios.post('https://algorithm-visualizer.org/api/visualizations', { content: JSON.stringify(Tracer.traces) })
-      .then(response => {
-        opn(response.data, { wait: false });
-        process.exit();
-      });
+      .then(response => opn(response.data, { wait: false }))
+      .catch(console.error)
+      .finally(() => process.exit());
   });
 }
 

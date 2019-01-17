@@ -1,6 +1,6 @@
 {
   "name": "algorithm-visualizer",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "JavaScript Tracers for Algorithm Visualizer",
   "main": "dist/tracers.js",
   "scripts": {
