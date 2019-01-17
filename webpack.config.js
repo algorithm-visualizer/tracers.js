@@ -1,3 +1,4 @@
+const nodeExternals = require('webpack-node-externals');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
@@ -6,8 +7,9 @@ const buildPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
 
 module.exports = [{
-  target: 'web',
+  target: 'node',
   entry: srcPath,
+  externals: [nodeExternals()],
   resolve: {
     modules: [path.resolve(__dirname, 'node_modules')],
     extensions: ['.js'],

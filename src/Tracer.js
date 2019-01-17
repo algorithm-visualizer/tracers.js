@@ -43,4 +43,18 @@ class Tracer {
 Tracer.tracerCount = 0;
 Tracer.traces = [];
 
+const { ALGORITHM_VISUALIZER } = process.env;
+if (ALGORITHM_VISUALIZER) {
+} else {
+  const axios = require('axios');
+  const opn = require('opn');
+  process.on('beforeExit', () => {
+    axios.post('https://algorithm-visualizer.org/api/visualizations', { content: JSON.stringify(Tracer.traces) })
+      .then(response => {
+        opn(response.data, { wait: false });
+        process.exit();
+      });
+  });
+}
+
 export default Tracer;
