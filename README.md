@@ -24,4 +24,4 @@ Check out the [API reference](https://github.com/algorithm-visualizer/algorithm-
 
 ## Contributing
 
-Check out the [contributing guidelines](https://github.com/algorithm-visualizer/algorithms/blob/master/CONTRIBUTING.md).
+Check out the [contributing guidelines](https://github.com/algorithm-visualizer/tracers.js/blob/master/CONTRIBUTING.md).
