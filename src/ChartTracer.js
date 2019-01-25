@@ -1,11 +1,6 @@
-import { Tracer } from './';
+import { Array1DTracer } from './';
 
-class ChartTracer extends Tracer {
-  constructor(title) {
-    super(title);
-
-    this.register('ChartTracer', 'set', 'reset', 'delay', 'patch', 'depatch', 'select', 'deselect', 'chart');
-  }
+class ChartTracer extends Array1DTracer {
 }
 
 export default ChartTracer;

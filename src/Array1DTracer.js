@@ -1,10 +1,17 @@
-import { Tracer } from './';
+import { Array2DTracer } from './';
 
-class Array1DTracer extends Tracer {
+class Array1DTracer extends Array2DTracer {
   constructor(title) {
     super(title);
 
-    this.register('Array1DTracer', 'set', 'reset', 'delay', 'patch', 'depatch', 'select', 'deselect', 'chart');
+    this.register(
+      'set',
+      'patch',
+      'depatch',
+      'select',
+      'deselect',
+      'chart',
+    );
   }
 }
 

@@ -4,7 +4,17 @@ class Array2DTracer extends Tracer {
   constructor(title) {
     super(title);
 
-    this.register('Array2DTracer', 'set', 'reset', 'delay', 'patch', 'depatch', 'select', 'selectRow', 'selectCol', 'deselect', 'deselectRow', 'deselectCol');
+    this.register(
+      'set',
+      'patch',
+      'depatch',
+      'select',
+      'selectRow',
+      'selectCol',
+      'deselect',
+      'deselectRow',
+      'deselectCol',
+    );
   }
 }
 

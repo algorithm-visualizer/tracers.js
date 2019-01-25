@@ -4,7 +4,12 @@ class LogTracer extends Tracer {
   constructor(title) {
     super(title);
 
-    this.register('LogTracer', 'set', 'reset', 'delay', 'print', 'println', 'printf');
+    this.register(
+      'set',
+      'print',
+      'println',
+      'printf',
+    );
   }
 }
 

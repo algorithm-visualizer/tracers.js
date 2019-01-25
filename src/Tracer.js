@@ -24,8 +24,8 @@ class Tracer {
   constructor(title = this.constructor.name) {
     this.key = Tracer.addTracer(this.constructor.name, title);
     this.register(
-      'reset',
       'set',
+      'reset',
       'delay',
     );
   }
