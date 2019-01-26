@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "es6"
+    ],
+    "target": "es5",
+    "declaration": true
+  }
+}

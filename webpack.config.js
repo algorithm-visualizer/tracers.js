@@ -17,15 +17,19 @@ module.exports = [{
     globalObject: `(typeof self !== 'undefined' ? self : this)`,
   },
   node: {
-    process: false
+    process: false,
   },
   module: {
     rules: [
-      { test: /\.js$/, use: 'babel-loader', include: srcPath },
+      { test: /\.ts$/, use: 'ts-loader', include: srcPath },
     ],
+  },
+  resolve: {
+    extensions: ['.ts'],
   },
   plugins: [
     new CleanWebpackPlugin([buildPath]),
+    new DtsBundlePlugin(),
   ],
   optimization: {
     minimizer: [
@@ -39,3 +43,19 @@ module.exports = [{
   },
   mode: 'production',
 }];
+
+function DtsBundlePlugin() {
+}
+
+DtsBundlePlugin.prototype.apply = function (compiler) {
+  compiler.plugin('done', function () {
+    const dts = require('dts-bundle');
+
+    dts.bundle({
+      name: 'algorithm-visualizer',
+      main: path.resolve(srcPath, 'index.d.ts'),
+      out: path.resolve(buildPath, 'algorithm-visualizer.d.ts'),
+      removeSource: true,
+    });
+  });
+};
