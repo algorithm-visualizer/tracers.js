@@ -2,20 +2,19 @@ import { Tracer } from './';
 
 class LogTracer extends Tracer {
     set(log?: string): this {
-        return this.wtf('set', arguments);
+        return this.addTrace('set', arguments);
     }
 
     print(message: any): this {
-        console.log(this);
-        return this.wtf('print', arguments);
+        return this.addTrace('print', arguments);
     }
 
     println(message: any): this {
-        return this.wtf('println', arguments);
+        return this.addTrace('println', arguments);
     }
 
     printf(format: string, ...args: any[]): this {
-        return this.wtf('printf', arguments);
+        return this.addTrace('printf', arguments);
     }
 }
 

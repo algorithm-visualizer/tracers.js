@@ -2,71 +2,71 @@ import { LogTracer, Tracer } from './';
 
 class GraphTracer extends Tracer {
     set(array2d?: any[][]): this {
-        return this.wtf('set', arguments);
+        return this.addTrace('set', arguments);
     }
 
     directed(isDirected?: boolean): this {
-        return this.wtf('directed', arguments);
+        return this.addTrace('directed', arguments);
     }
 
     weighted(isWeighted?: boolean): this {
-        return this.wtf('weighted', arguments);
+        return this.addTrace('weighted', arguments);
     }
 
     addNode(id: any, weight?: any, x?: number, y?: number, visitedCount?: number, selectedCount?: number): this {
-        return this.wtf('addNode', arguments);
+        return this.addTrace('addNode', arguments);
     }
 
     updateNode(id: any, weight?: any, x?: number, y?: number, visitedCount?: number, selectedCount?: number): this {
-        return this.wtf('updateNode', arguments);
+        return this.addTrace('updateNode', arguments);
     }
 
     removeNode(id: any): this {
-        return this.wtf('removeNode', arguments);
+        return this.addTrace('removeNode', arguments);
     }
 
     addEdge(source: any, target: any, weight?: any, visitedCount?: number, selectedCount?: number): this {
-        return this.wtf('addEdge', arguments);
+        return this.addTrace('addEdge', arguments);
     }
 
     updateEdge(source: any, target: any, weight?: any, visitedCount?: number, selectedCount?: number): this {
-        return this.wtf('updateEdge', arguments);
+        return this.addTrace('updateEdge', arguments);
     }
 
     removeEdge(source: any, target: any): this {
-        return this.wtf('removeEdge', arguments);
+        return this.addTrace('removeEdge', arguments);
     }
 
     layoutCircle() {
-        return this.wtf('layoutCircle', arguments);
+        return this.addTrace('layoutCircle', arguments);
     }
 
     layoutTree(root?: any, sorted?: boolean) {
-        return this.wtf('layoutTree', arguments);
+        return this.addTrace('layoutTree', arguments);
     }
 
     layoutRandom() {
-        return this.wtf('layoutRandom', arguments);
+        return this.addTrace('layoutRandom', arguments);
     }
 
     visit(target: any, source?: any, weight?: any) {
-        return this.wtf('visit', arguments);
+        return this.addTrace('visit', arguments);
     }
 
     leave(target: any, source?: any, weight?: any) {
-        return this.wtf('leave', arguments);
+        return this.addTrace('leave', arguments);
     }
 
     select(target: any, source?: any) {
-        return this.wtf('select', arguments);
+        return this.addTrace('select', arguments);
     }
 
     deselect(target: any, source?: any) {
-        return this.wtf('deselect', arguments);
+        return this.addTrace('deselect', arguments);
     }
 
     log(logTracer: LogTracer) {
-        return this.wtf('log', arguments);
+        return this.addTrace('log', arguments);
     }
 }
 

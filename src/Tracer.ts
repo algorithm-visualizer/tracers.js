@@ -36,22 +36,22 @@ class Tracer {
         this.key = Tracer.addTracer(className, title);
     }
 
-    wtf(method: string, iArguments: IArguments): this {
+    addTrace(method: string, iArguments: IArguments): this {
         const args = Array.from(iArguments).map(arg => arg instanceof Tracer ? arg.key : arg);
         Tracer.addTrace(this.key, method, args);
         return this;
     }
 
     set(): this {
-        return this.wtf('set', arguments);
+        return this.addTrace('set', arguments);
     }
 
     reset(): this {
-        return this.wtf('reset', arguments);
+        return this.addTrace('reset', arguments);
     }
 
     delay(): this {
-        return this.wtf('delay', arguments);
+        return this.addTrace('delay', arguments);
     }
 }
 
