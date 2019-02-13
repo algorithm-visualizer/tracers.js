@@ -14,7 +14,7 @@ class Commander {
     private static objectCount = 0;
     public static commands: Command[] = [];
 
-    static command(key: string | null, method: string, iArguments: IArguments): void {
+    static command(key: string | null, method: string, iArguments: IArguments): Commander {
         const args = Array.from(iArguments);
         this.commands.push({
             key,
@@ -23,14 +23,15 @@ class Commander {
         });
         if (this.commands.length > MAX_COMMANDS) throw new Error('Too Many Commands');
         if (this.objectCount > MAX_OBJECTS) throw new Error('Too Many Objects');
+        return (<any>this);
     }
 
-    static setRoot(child: Commander) {
-        this.command(null, 'setRoot', arguments);
+    static setRoot(child: Commander): Commander {
+        return this.command(null, 'setRoot', arguments);
     }
 
-    static delay(lineNumber?: Number) {
-        this.command(null, 'delay', arguments);
+    static delay(lineNumber?: Number): Commander {
+        return this.command(null, 'delay', arguments);
     }
 
     private readonly key: string;
