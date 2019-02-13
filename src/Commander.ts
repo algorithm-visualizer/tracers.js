@@ -29,7 +29,7 @@ class Commander {
         this.command(null, 'setRoot', arguments);
     }
 
-    static delay() {
+    static delay(lineNumber?: Number) {
         this.command(null, 'delay', arguments);
     }
 
@@ -51,8 +51,8 @@ class Commander {
         return this;
     }
 
-    delay(): this {
-        Commander.delay();
+    delay(lineNumber?: Number): this {
+        Commander.delay(lineNumber);
         return this;
     }
 
