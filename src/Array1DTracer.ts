@@ -2,27 +2,27 @@ import { Array2DTracer, ChartTracer } from './';
 
 class Array1DTracer extends Array2DTracer {
     set(array1d?: any[]): this {
-        return this.addTrace('set', arguments);
+        return this.command('set', arguments);
     }
 
     patch(x: number, v?: any): this {
-        return this.addTrace('patch', arguments);
+        return this.command('patch', arguments);
     }
 
     depatch(x: number): this {
-        return this.addTrace('depatch', arguments);
+        return this.command('depatch', arguments);
     }
 
     select(sx: number, ex?: number): this {
-        return this.addTrace('select', arguments);
+        return this.command('select', arguments);
     }
 
     deselect(sx: number, ex?: number): this {
-        return this.addTrace('deselect', arguments);
+        return this.command('deselect', arguments);
     }
 
     chart(chartTracer: ChartTracer): this {
-        return this.addTrace('chart', arguments);
+        return this.command('chart', arguments);
     }
 }
 

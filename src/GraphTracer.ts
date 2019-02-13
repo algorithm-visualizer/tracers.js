@@ -2,71 +2,71 @@ import { LogTracer, Tracer } from './';
 
 class GraphTracer extends Tracer {
     set(array2d?: any[][]): this {
-        return this.addTrace('set', arguments);
+        return this.command('set', arguments);
     }
 
     directed(isDirected?: boolean): this {
-        return this.addTrace('directed', arguments);
+        return this.command('directed', arguments);
     }
 
     weighted(isWeighted?: boolean): this {
-        return this.addTrace('weighted', arguments);
+        return this.command('weighted', arguments);
     }
 
     addNode(id: any, weight?: any, x?: number, y?: number, visitedCount?: number, selectedCount?: number): this {
-        return this.addTrace('addNode', arguments);
+        return this.command('addNode', arguments);
     }
 
     updateNode(id: any, weight?: any, x?: number, y?: number, visitedCount?: number, selectedCount?: number): this {
-        return this.addTrace('updateNode', arguments);
+        return this.command('updateNode', arguments);
     }
 
     removeNode(id: any): this {
-        return this.addTrace('removeNode', arguments);
+        return this.command('removeNode', arguments);
     }
 
     addEdge(source: any, target: any, weight?: any, visitedCount?: number, selectedCount?: number): this {
-        return this.addTrace('addEdge', arguments);
+        return this.command('addEdge', arguments);
     }
 
     updateEdge(source: any, target: any, weight?: any, visitedCount?: number, selectedCount?: number): this {
-        return this.addTrace('updateEdge', arguments);
+        return this.command('updateEdge', arguments);
     }
 
     removeEdge(source: any, target: any): this {
-        return this.addTrace('removeEdge', arguments);
+        return this.command('removeEdge', arguments);
     }
 
     layoutCircle() {
-        return this.addTrace('layoutCircle', arguments);
+        return this.command('layoutCircle', arguments);
     }
 
     layoutTree(root?: any, sorted?: boolean) {
-        return this.addTrace('layoutTree', arguments);
+        return this.command('layoutTree', arguments);
     }
 
     layoutRandom() {
-        return this.addTrace('layoutRandom', arguments);
+        return this.command('layoutRandom', arguments);
     }
 
     visit(target: any, source?: any, weight?: any) {
-        return this.addTrace('visit', arguments);
+        return this.command('visit', arguments);
     }
 
     leave(target: any, source?: any, weight?: any) {
-        return this.addTrace('leave', arguments);
+        return this.command('leave', arguments);
     }
 
     select(target: any, source?: any) {
-        return this.addTrace('select', arguments);
+        return this.command('select', arguments);
     }
 
     deselect(target: any, source?: any) {
-        return this.addTrace('deselect', arguments);
+        return this.command('deselect', arguments);
     }
 
     log(logTracer: LogTracer) {
-        return this.addTrace('log', arguments);
+        return this.command('log', arguments);
     }
 }
 

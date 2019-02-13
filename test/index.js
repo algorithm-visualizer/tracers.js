@@ -1,6 +1,7 @@
-const { LogTracer } = require('../dist/algorithm-visualizer');
+const { LogTracer, VerticalLayout } = require('../dist/algorithm-visualizer');
 
 const logTracer = new LogTracer();
+new VerticalLayout([logTracer]);
 
 logTracer.set('haahahahaa: ');
 
