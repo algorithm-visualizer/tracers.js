@@ -14,7 +14,7 @@ class Commander {
     private static objectCount = 0;
     public static commands: Command[] = [];
 
-    static command(key: string | null, method: string, iArguments: IArguments): Commander {
+    static command(key: string | null, method: string, iArguments: IArguments) {
         const args = Array.from(iArguments);
         this.commands.push({
             key,
@@ -23,20 +23,12 @@ class Commander {
         });
         if (this.commands.length > MAX_COMMANDS) throw new Error('Too Many Commands');
         if (this.objectCount > MAX_OBJECTS) throw new Error('Too Many Objects');
-        return (<any>this);
-    }
-
-    static setRoot(child: Commander): Commander {
-        return this.command(null, 'setRoot', arguments);
-    }
-
-    static delay(lineNumber?: Number): Commander {
-        return this.command(null, 'delay', arguments);
     }
 
     private readonly key: string;
 
     constructor(iArguments: IArguments) {
+        Commander.objectCount++;
         const className = (<any>this).constructor.name;
         this.key = Commander.keyRandomizer.create();
         this.command(className, iArguments);
@@ -44,17 +36,11 @@ class Commander {
 
     destroy() {
         Commander.objectCount--;
-        return this.command('destroy', arguments);
+        this.command('destroy', arguments);
     }
 
-    command(method: string, iArguments: IArguments): this {
+    command(method: string, iArguments: IArguments) {
         Commander.command(this.key, method, iArguments);
-        return this;
-    }
-
-    delay(lineNumber?: Number): this {
-        Commander.delay(lineNumber);
-        return this;
     }
 
     toJSON() {
