@@ -1,8 +1,9 @@
 # tracers.js
 
-> `tracers.js` is a visualization library for JavaScript.
+> This repository is part of the project [Algorithm Visualizer](https://github.com/algorithm-visualizer).
 
-This repository is part of the project [Algorithm Visualizer](https://github.com/algorithm-visualizer).
+`tracers.js` is a visualization library for JavaScript.
+You can use it on [algorithm-visualizer.org](https://algorithm-visualizer.org/) or locally on your machine.
 
 ## Installation
 
