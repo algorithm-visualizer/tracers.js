@@ -1,4 +1,4 @@
-# tracers.js
+# tracers.js ![npm](https://img.shields.io/npm/v/algorithm-visualizer.svg?style=flat-square)
 
 > This repository is part of the project [Algorithm Visualizer](https://github.com/algorithm-visualizer).
 
