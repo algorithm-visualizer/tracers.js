@@ -8,9 +8,14 @@
     "visualization",
     "animation"
   ],
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "browser": "dist/index.umd.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algorithm-visualizer/tracers.js.git"
+  },
+  "license": "MIT",
+  "main": "dist/algorithm-visualizer.cjs.js",
+  "module": "dist/algorithm-visualizer.esm.js",
+  "browser": "dist/algorithm-visualizer.umd.js",
   "types": "dist/types",
   "dependencies": {
     "axios": "^0.18.0",
