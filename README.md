@@ -14,7 +14,7 @@ npm install algorithm-visualizer
 ## Usage
 
 ```js
-import { LogTracer } from 'algorithm-visualizer';
+const { LogTracer } = require('algorithm-visualizer');
 
 const logTracer = new LogTracer('Scratch Paper');
 

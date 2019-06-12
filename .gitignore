@@ -1,6 +1,6 @@
 /.idea
 /node_modules
+/.rpt2_cache
 /dist
 /npm-debug.log
 .DS_Store
-*.d.ts

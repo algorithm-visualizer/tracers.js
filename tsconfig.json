@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "types": [
-      "node"
-    ],
-    "lib": [
-      "es6"
-    ],
     "target": "es5",
-    "declaration": true
-  }
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "strict": true,
+    "noUnusedLocals": true,
+    "lib": [
+      "es2017"
+    ]
+  },
+  "include": [
+    "src"
+  ]
 }

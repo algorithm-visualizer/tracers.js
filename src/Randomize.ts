@@ -144,6 +144,7 @@ class Graph extends Randomizer {
 
 export default {
     Integer,
+    Double,
     String,
     Array1D,
     Array2D,
