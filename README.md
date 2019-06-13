@@ -21,7 +21,7 @@ const logTracer = new LogTracer('Scratch Paper');
 logTracer.print('Visualize your own algorithm here!');
 ```
 
-Check out the [API reference](https://github.com/algorithm-visualizer/algorithm-visualizer/wiki) for more information.
+Check out the [API reference](https://algorithm-visualizer.github.io/tracers.js/) for more information.
 
 ## Contributing
 
