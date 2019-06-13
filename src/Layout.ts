@@ -1,8 +1,5 @@
 import { Commander, Tracer } from './';
 
-/**
- * @ignore
- */
 export default abstract class Layout extends Commander {
   /**
    * Create a layout.

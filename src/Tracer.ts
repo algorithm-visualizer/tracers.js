@@ -1,8 +1,5 @@
 import { Commander } from './';
 
-/**
- * @ignore
- */
 export default abstract class Tracer extends Commander {
   /**
    * Create a tracer.

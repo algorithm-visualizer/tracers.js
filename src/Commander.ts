@@ -12,9 +12,6 @@ interface Command {
   args: Array<any>,
 }
 
-/**
- * @ignore
- */
 export default abstract class Commander {
   /**
    * @ignore
@@ -28,6 +25,14 @@ export default abstract class Commander {
     const className = (<any>this).constructor.name;
     this.key = Commander.randomizeKey();
     this.command(className, iArguments);
+  }
+
+  /**
+   * @ignore
+   */
+  public static init() {
+    this.commands = [];
+    this.objectCount = 0;
   }
 
   protected static command(key: string | null, method: string, iArguments: IArguments) {
