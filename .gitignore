@@ -2,5 +2,6 @@
 /node_modules
 /.rpt2_cache
 /dist
+/docs
 /npm-debug.log
 .DS_Store

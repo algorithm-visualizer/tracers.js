@@ -1,0 +1,8 @@
+{
+  "out": "docs",
+  "module": "commonjs",
+  "mode": "file",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "src": "src"
+}

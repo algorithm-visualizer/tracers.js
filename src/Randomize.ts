@@ -1,152 +1,202 @@
-class Randomizer {
-    create(): any {
-        return null;
+namespace Randomize {
+  type IntegerOptions = {
+    /**
+     * The inclusive lower bound.
+     */
+    min?: number;
+
+    /**
+     * The inclusive upper bound.
+     */
+    max?: number;
+  }
+
+  export function Integer(options?: IntegerOptions) {
+    const {
+      min = 1,
+      max = 9,
+    } = options || {};
+
+    return Math.random() * (max - min + 1) + min | 0;
+  }
+
+  type DoubleOptions = {
+    /**
+     * The inclusive lower bound.
+     */
+    min?: number;
+
+    /**
+     * The exclusive upper bound.
+     */
+    max?: number;
+  }
+
+  export function Double(options?: DoubleOptions) {
+    const {
+      min = 0,
+      max = 1,
+    } = options || {};
+
+    return Math.random() * (max - min) + min;
+  }
+
+  type StringOptions = {
+    length?: number;
+
+    /**
+     * The character set to generate a random string from.
+     */
+    letters?: string;
+  }
+
+  export function String(options?: StringOptions) {
+    const {
+      length = 16,
+      letters = 'abcdefghijklmnopqrstuvwxyz',
+    } = options || {};
+
+    let text = '';
+    for (let i = 0; i < length; i++) {
+      text += letters[Integer({min: 0, max: letters.length - 1})];
     }
-}
+    return text;
+  }
 
-class Integer extends Randomizer {
-    private readonly _min: number;
-    private readonly _max: number;
+  type Array2DOptions = {
+    /**
+     * The number of rows.
+     */
+    N?: number;
 
-    constructor(min: number = 1, max: number = 9) {
-        super();
-        this._min = min;
-        this._max = max;
+    /**
+     * The number of columns.
+     */
+    M?: number;
+
+    /**
+     * The function to generate the value of each element.
+     *
+     * @param i The row index of an element to generate the value of.
+     * @param j The column index of an element to generate the value of.
+     */
+    value?: (i: number, j: number) => any;
+
+    /**
+     * Whether to sort each row.
+     */
+    sorted?: boolean;
+  }
+
+  export function Array2D(options?: Array2DOptions): any[][] {
+    const {
+      N = 10,
+      M = 10,
+      value = () => Integer(),
+      sorted = false,
+    } = options || {};
+
+    const D: any[][] = [];
+    for (let i = 0; i < N; i++) {
+      D.push([]);
+      for (let j = 0; j < M; j++) {
+        D[i].push(value(i, j));
+      }
+      if (sorted) D[i].sort((a, b) => a - b);
     }
+    return D;
+  }
 
-    create(): number {
-        return Math.random() * (this._max - this._min + 1) + this._min | 0;
+  type Array1DOptions = {
+    /**
+     * The number of elements.
+     */
+    N?: number;
+
+    /**
+     * The function to generate the value of each element.
+     *
+     * @param i The index of an element to generate the value of.
+     */
+    value?: (i: number) => any;
+
+    /**
+     * Whether to sort the array.
+     */
+    sorted?: boolean;
+  }
+
+  export function Array1D(options?: Array1DOptions) {
+    const {
+      N = 10,
+      value = () => Integer(),
+      sorted = false,
+    } = options || {};
+
+    return Array2D({
+      N: 1,
+      M: N,
+      value: value && ((i, j) => value(j)),
+      sorted,
+    })[0];
+  }
+
+  type GraphOptions = {
+    /**
+     * The number of nodes.
+     */
+    N?: number;
+
+    /**
+     * The probability that an edge between any two nodes is generated.
+     */
+    ratio?: number;
+
+    /**
+     * The function to generate the weight of each edge.
+     *
+     * @param source The id of the node where the edge starts.
+     * @param target The id of the node where the edge ends.
+     */
+    value?: (i: number, j: number) => any;
+
+    /**
+     * Whether to make the graph directed.
+     */
+    directed?: boolean;
+
+    /**
+     * Whether to make the graph weighted.
+     */
+    weighted?: boolean;
+  }
+
+  export function Graph(options?: GraphOptions) {
+    const {
+      N = 5,
+      ratio = .3,
+      value = () => Integer(),
+      directed = true,
+      weighted = false,
+    } = options || {};
+
+    const G: any[][] = new Array(N);
+    for (let i = 0; i < N; i++) {
+      G[i] = new Array(N);
     }
-}
-
-class Double extends Randomizer {
-    private readonly _min: number;
-    private readonly _max: number;
-
-    constructor(min: number = 0, max: number = 1) {
-        super();
-        this._min = min;
-        this._max = max;
-    }
-
-    create(): number {
-        return Math.random() * (this._max - this._min) + this._min;
-    }
-}
-
-class String extends Randomizer {
-    private readonly _length: number;
-    private readonly _letters: string;
-
-    constructor(length: number = 16, letters: string = 'abcdefghijklmnopqrstuvwxyz') {
-        super();
-        this._length = length;
-        this._letters = letters;
-    }
-
-    create(): string {
-        let text = '';
-        const randomizer = new Integer(0, this._letters.length - 1);
-        for (let i = 0; i < this._length; i++) {
-            text += this._letters[randomizer.create()];
+    for (let i = 0; i < N; i++) {
+      for (let j = 0; j < N; j++) {
+        if (i === j) {
+          G[i][j] = 0;
+        } else if (directed || i < j) {
+          G[i][j] = Math.random() < ratio ? weighted ? value(i, j) : 1 : 0;
+        } else {
+          G[i][j] = G[j][i];
         }
-        return text;
+      }
     }
+    return G;
+  }
 }
 
-class Array2D extends Randomizer {
-    private readonly _N: number;
-    private readonly _M: number;
-    private readonly _randomizer: Randomizer;
-    private _sorted: boolean;
-
-    constructor(N: number = 10, M: number = 10, randomizer: Randomizer = new Integer()) {
-        super();
-        this._N = N;
-        this._M = M;
-        this._randomizer = randomizer;
-        this._sorted = false;
-    }
-
-    sorted(sorted = true): this {
-        this._sorted = sorted;
-        return this;
-    }
-
-    create(): any[][] {
-        const D: any[][] = [];
-        for (let i = 0; i < this._N; i++) {
-            D.push([]);
-            for (let j = 0; j < this._M; j++) {
-                D[i].push(this._randomizer.create());
-            }
-            if (this._sorted) D[i].sort((a, b) => a - b);
-        }
-        return D;
-    }
-}
-
-class Array1D extends Array2D {
-    constructor(N?: number, randomizer?: Randomizer) {
-        super(1, N, randomizer);
-    }
-
-    create(): any[] {
-        return super.create()[0];
-    }
-}
-
-class Graph extends Randomizer {
-    private readonly _N: number;
-    private readonly _ratio: number;
-    private _randomizer: Randomizer;
-    private _directed: boolean;
-    private _weighted: boolean;
-
-    constructor(N: number = 5, ratio: number = .3, randomizer: Randomizer = new Integer()) {
-        super();
-        this._N = N;
-        this._ratio = ratio;
-        this._randomizer = randomizer;
-        this._directed = true;
-        this._weighted = false;
-    }
-
-    directed(directed: boolean = true): this {
-        this._directed = directed;
-        return this;
-    }
-
-    weighted(weighted: boolean = true): this {
-        this._weighted = weighted;
-        return this;
-    }
-
-    create(): any[][] {
-        const G: any[][] = new Array(this._N);
-        for (let i = 0; i < this._N; i++) {
-            G[i] = new Array(this._N);
-        }
-        for (let i = 0; i < this._N; i++) {
-            for (let j = 0; j < this._N; j++) {
-                if (i === j) {
-                    G[i][j] = 0;
-                } else if (this._directed || i < j) {
-                    G[i][j] = Math.random() < this._ratio ? this._weighted ? this._randomizer.create() : 1 : 0;
-                } else {
-                    G[i][j] = G[j][i];
-                }
-            }
-        }
-        return G;
-    }
-}
-
-export default {
-    Integer,
-    Double,
-    String,
-    Array1D,
-    Array2D,
-    Graph,
-};
+export default Randomize;

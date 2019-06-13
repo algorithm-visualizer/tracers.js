@@ -1,21 +1,40 @@
 import { Tracer } from './';
 
-class LogTracer extends Tracer {
-    set(log?: string) {
-        this.command('set', arguments);
-    }
+export default class LogTracer extends Tracer {
+  /**
+   * Set initial log to show.
+   *
+   * @param log
+   */
+  set(log?: string) {
+    this.command('set', arguments);
+  }
 
-    print(message: any) {
-        this.command('print', arguments);
-    }
+  /**
+   * Print log.
+   *
+   * @param message
+   */
+  print(message: any) {
+    this.command('print', arguments);
+  }
 
-    println(message: any) {
-        this.command('println', arguments);
-    }
+  /**
+   * Print log and put a line break.
+   *
+   * @param message
+   */
+  println(message: any) {
+    this.command('println', arguments);
+  }
 
-    printf(format: string, ...args: any[]) {
-        this.command('printf', arguments);
-    }
+  /**
+   * Print formatted log.
+   *
+   * @param format Refer to [sprintf-js](https://github.com/alexei/sprintf.js#format-specification).
+   * @param args
+   */
+  printf(format: string, ...args: any[]) {
+    this.command('printf', arguments);
+  }
 }
-
-export default LogTracer;

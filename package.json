@@ -23,16 +23,20 @@
   },
   "devDependencies": {
     "@types/node": "^12.0.8",
+    "gh-pages": "^2.0.1",
     "rollup": "^1.15.1",
     "rollup-plugin-typescript2": "^0.21.1",
     "tslib": "^1.10.0",
+    "typedoc": "^0.14.2",
     "typescript": "^3.5.1"
   },
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rm -rf dist && rollup -c",
+    "docs": "typedoc",
     "test": "node ./test",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "postpublish": "npm run docs && gh-pages -d docs"
   },
   "files": [
     "dist"

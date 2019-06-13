@@ -3,61 +3,72 @@ import { Randomize } from './';
 const MAX_COMMANDS = 1000000;
 const MAX_OBJECTS = 100;
 
+/**
+ * @ignore
+ */
 interface Command {
-    key: string | null,
-    method: string,
-    args: Array<any>,
+  key: string | null,
+  method: string,
+  args: Array<any>,
 }
 
-class Commander {
-    private static keyRandomizer = new Randomize.String(8, 'abcdefghijklmnopqrstuvwxyz0123456789');
-    private static objectCount = 0;
-    public static commands: Command[] = [];
+/**
+ * @ignore
+ */
+export default abstract class Commander {
+  /**
+   * @ignore
+   */
+  public static commands: Command[] = [];
+  private static objectCount = 0;
+  private readonly key: string;
 
-    static command(key: string | null, method: string, iArguments: IArguments) {
-        const args = Array.from(iArguments);
-        this.commands.push({
-            key,
-            method,
-            args: JSON.parse(JSON.stringify(args)),
-        });
-        if (this.commands.length > MAX_COMMANDS) throw new Error('Too Many Commands');
-        if (this.objectCount > MAX_OBJECTS) throw new Error('Too Many Objects');
-    }
+  protected constructor(iArguments: IArguments) {
+    Commander.objectCount++;
+    const className = (<any>this).constructor.name;
+    this.key = Commander.randomizeKey();
+    this.command(className, iArguments);
+  }
 
-    private readonly key: string;
-
-    constructor(iArguments: IArguments) {
-        Commander.objectCount++;
-        const className = (<any>this).constructor.name;
-        this.key = Commander.keyRandomizer.create();
-        this.command(className, iArguments);
-    }
-
-    destroy() {
-        Commander.objectCount--;
-        this.command('destroy', arguments);
-    }
-
-    command(method: string, iArguments: IArguments) {
-        Commander.command(this.key, method, iArguments);
-    }
-
-    toJSON() {
-        return this.key;
-    }
-}
-
-const {ALGORITHM_VISUALIZER} = process.env;
-if (!ALGORITHM_VISUALIZER) {
-    const axios = require('axios');
-    const opn = require('opn');
-    process.on('beforeExit', () => {
-        axios.post('https://algorithm-visualizer.org/api/visualizations', {content: JSON.stringify(Commander.commands)})
-            .then((response: any) => opn(response.data, {wait: false}))
-            .catch(console.error)
-            .finally(() => process.exit());
+  protected static command(key: string | null, method: string, iArguments: IArguments) {
+    const args = Array.from(iArguments);
+    this.commands.push({
+      key,
+      method,
+      args: JSON.parse(JSON.stringify(args)),
     });
+    if (this.commands.length > MAX_COMMANDS) throw new Error('Too Many Commands');
+    if (this.objectCount > MAX_OBJECTS) throw new Error('Too Many Objects');
+  }
+
+  private static randomizeKey() {
+    return Randomize.String({length: 8, letters: 'abcdefghijklmnopqrstuvwxyz0123456789'});
+  }
+
+  /**
+   * Remove the tracer.
+   */
+  destroy() {
+    Commander.objectCount--;
+    this.command('destroy', arguments);
+  }
+
+  protected command(method: string, iArguments: IArguments) {
+    Commander.command(this.key, method, iArguments);
+  }
+
+  protected toJSON() {
+    return this.key;
+  }
 }
 
-export default Commander;
+if (!process.env.ALGORITHM_VISUALIZER) {
+  const axios = require('axios');
+  const opn = require('opn');
+  process.on('beforeExit', () => {
+    axios.post('https://algorithm-visualizer.org/api/visualizations', {content: JSON.stringify(Commander.commands)})
+      .then((response: any) => opn(response.data, {wait: false}))
+      .catch(console.error)
+      .finally(() => process.exit());
+  });
+}
