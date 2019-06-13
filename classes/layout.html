@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LogTracer | algorithm-visualizer</title>
+	<title>Layout | algorithm-visualizer</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="logtracer.html">LogTracer</a>
+					<a href="layout.html">Layout</a>
 				</li>
 			</ul>
-			<h1>Class LogTracer</h1>
+			<h1>Class Layout</h1>
 		</div>
 	</div>
 </header>
@@ -70,10 +70,18 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="tracer.html" class="tsd-signature-type">Tracer</a>
+						<a href="commander.html" class="tsd-signature-type">Commander</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">LogTracer</span>
+								<span class="target">Layout</span>
+								<ul class="tsd-hierarchy">
+									<li>
+										<a href="verticallayout.html" class="tsd-signature-type">VerticalLayout</a>
+									</li>
+									<li>
+										<a href="horizontallayout.html" class="tsd-signature-type">HorizontalLayout</a>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</li>
@@ -83,65 +91,97 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-inherited">
+						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="logtracer.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="layout.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="logtracer.html#destroy" class="tsd-kind-icon">destroy</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logtracer.html#print" class="tsd-kind-icon">print</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logtracer.html#printf" class="tsd-kind-icon">printf</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logtracer.html#println" class="tsd-kind-icon">println</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="logtracer.html#reset" class="tsd-kind-icon">reset</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logtracer.html#set" class="tsd-kind-icon">set</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="logtracer.html#delay" class="tsd-kind-icon">delay</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="layout.html#add" class="tsd-kind-icon">add</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="layout.html#destroy" class="tsd-kind-icon">destroy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="layout.html#remove" class="tsd-kind-icon">remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="layout.html#removeall" class="tsd-kind-icon">remove<wbr>All</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="layout.html#setroot" class="tsd-kind-icon">set<wbr>Root</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Log<wbr>Tracer<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="logtracer.html" class="tsd-signature-type">LogTracer</a></li>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Layout<span class="tsd-signature-symbol">(</span>children<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><a href="layout.html" class="tsd-signature-type">Layout</a><span class="tsd-signature-symbol"> | </span><a href="tracer.html" class="tsd-signature-type">Tracer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="layout.html" class="tsd-signature-type">Layout</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="tracer.html">Tracer</a>.<a href="tracer.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/Tracer.ts#L3">Tracer.ts:3</a></li>
+									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/Layout.ts#L3">Layout.ts:3</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Create a tracer.</p>
+									<p>Create a layout.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> title: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+									<h5>children: <span class="tsd-signature-symbol">(</span><a href="layout.html" class="tsd-signature-type">Layout</a><span class="tsd-signature-symbol"> | </span><a href="tracer.html" class="tsd-signature-type">Tracer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
+											<p>The child views to contain.</p>
 										</div>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="logtracer.html" class="tsd-signature-type">LogTracer</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="layout.html" class="tsd-signature-type">Layout</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="add" class="tsd-anchor"></a>
+					<h3>add</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>child<span class="tsd-signature-symbol">: </span><a href="layout.html" class="tsd-signature-type">Layout</a><span class="tsd-signature-symbol"> | </span><a href="tracer.html" class="tsd-signature-type">Tracer</a>, index<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/Layout.ts#L28">Layout.ts:28</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Add a child to the layout.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>child: <a href="layout.html" class="tsd-signature-type">Layout</a><span class="tsd-signature-symbol"> | </span><a href="tracer.html" class="tsd-signature-type">Tracer</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> index: <span class="tsd-signature-type">Number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The index to add the child to.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="destroy" class="tsd-anchor"></a>
 					<h3>destroy</h3>
@@ -166,27 +206,27 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="print" class="tsd-anchor"></a>
-					<h3>print</h3>
+					<a name="remove" class="tsd-anchor"></a>
+					<h3>remove</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">print<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>child<span class="tsd-signature-symbol">: </span><a href="layout.html" class="tsd-signature-type">Layout</a><span class="tsd-signature-symbol"> | </span><a href="tracer.html" class="tsd-signature-type">Tracer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/LogTracer.ts#L18">LogTracer.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/Layout.ts#L37">Layout.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Print log.</p>
+									<p>Remove a child from the layout.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>message: <span class="tsd-signature-type">any</span></h5>
+									<h5>child: <a href="layout.html" class="tsd-signature-type">Layout</a><span class="tsd-signature-symbol"> | </span><a href="tracer.html" class="tsd-signature-type">Tracer</a></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
@@ -196,149 +236,50 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="printf" class="tsd-anchor"></a>
-					<h3>printf</h3>
+					<a name="removeall" class="tsd-anchor"></a>
+					<h3>remove<wbr>All</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">printf<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>All<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/LogTracer.ts#L37">LogTracer.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/Layout.ts#L44">Layout.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Print formatted log.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>format: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Refer to <a href="https://github.com/alexei/sprintf.js#format-specification">sprintf-js</a>.</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="println" class="tsd-anchor"></a>
-					<h3>println</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">println<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/LogTracer.ts#L27">LogTracer.ts:27</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Print log and put a line break.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>message: <span class="tsd-signature-type">any</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-					<a name="reset" class="tsd-anchor"></a>
-					<h3>reset</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">reset<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Inherited from <a href="tracer.html">Tracer</a>.<a href="tracer.html#reset">reset</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/Tracer.ts#L25">Tracer.ts:25</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Reset the tracer.</p>
+									<p>Remove all the child views from the layout.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="set" class="tsd-anchor"></a>
-					<h3>set</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>log<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="setroot" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> set<wbr>Root</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Root<span class="tsd-signature-symbol">(</span>root<span class="tsd-signature-symbol">: </span><a href="layout.html" class="tsd-signature-type">Layout</a><span class="tsd-signature-symbol"> | </span><a href="tracer.html" class="tsd-signature-type">Tracer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/LogTracer.ts#L9">LogTracer.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/Layout.ts#L18">Layout.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Set initial log to show.</p>
+									<p>Set a view as the root view.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> log: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+									<h5>root: <a href="layout.html" class="tsd-signature-type">Layout</a><span class="tsd-signature-symbol"> | </span><a href="tracer.html" class="tsd-signature-type">Tracer</a></h5>
 									<div class="tsd-comment tsd-typography">
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-					<a name="delay" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> delay</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">delay<span class="tsd-signature-symbol">(</span>lineNumber<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Inherited from <a href="tracer.html">Tracer</a>.<a href="tracer.html#delay">delay</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/algorithm-visualizer/tracers.js/blob/d7b2e5b/src/Tracer.ts#L18">Tracer.ts:18</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Pause to show changes in all tracers.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> lineNumber: <span class="tsd-signature-type">Number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The line number to indicate when paused. If omitted, the line calling this method will be indicated.</p>
 									</div>
 								</li>
 							</ul>
@@ -376,42 +317,36 @@
 					<li class=" tsd-kind-class">
 						<a href="horizontallayout.html" class="tsd-kind-icon">Horizontal<wbr>Layout</a>
 					</li>
-					<li class=" tsd-kind-class">
-						<a href="layout.html" class="tsd-kind-icon">Layout</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="logtracer.html" class="tsd-kind-icon">Log<wbr>Tracer</a>
+						<a href="layout.html" class="tsd-kind-icon">Layout</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-								<a href="logtracer.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="layout.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="layout.html#add" class="tsd-kind-icon">add</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="logtracer.html#destroy" class="tsd-kind-icon">destroy</a>
+								<a href="layout.html#destroy" class="tsd-kind-icon">destroy</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="logtracer.html#print" class="tsd-kind-icon">print</a>
+								<a href="layout.html#remove" class="tsd-kind-icon">remove</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="logtracer.html#printf" class="tsd-kind-icon">printf</a>
+								<a href="layout.html#removeall" class="tsd-kind-icon">remove<wbr>All</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="logtracer.html#println" class="tsd-kind-icon">println</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="logtracer.html#reset" class="tsd-kind-icon">reset</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="logtracer.html#set" class="tsd-kind-icon">set</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="logtracer.html#delay" class="tsd-kind-icon">delay</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="layout.html#setroot" class="tsd-kind-icon">set<wbr>Root</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="logtracer.html" class="tsd-kind-icon">Log<wbr>Tracer</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="tracer.html" class="tsd-kind-icon">Tracer</a>
 					</li>
