@@ -1,4 +1,4 @@
-# tracers.js [![npm](https://img.shields.io/npm/v/algorithm-visualizer.svg?style=flat-square)](https://www.npmjs.com/package/algorithm-visualizer) [![Travis (.com)](https://img.shields.io/travis/com/algorithm-visualizer/tracers.js.svg?style=flat-square)](https://travis-ci.com/algorithm-visualizer/tracers.js)
+# tracers.js [![npm](https://img.shields.io/npm/v/algorithm-visualizer.svg?style=flat-square)](https://www.npmjs.com/package/algorithm-visualizer) [![API reference](https://img.shields.io/badge/documentation-js-red.svg?style=flat-square)](https://algorithm-visualizer.github.io/tracers.js/) [![Travis (.com)](https://img.shields.io/travis/com/algorithm-visualizer/tracers.js.svg?style=flat-square)](https://travis-ci.com/algorithm-visualizer/tracers.js)
 
 > This repository is part of the project [Algorithm Visualizer](https://github.com/algorithm-visualizer).
 
