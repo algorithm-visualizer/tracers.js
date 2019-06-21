@@ -1,4 +1,24 @@
 language: node_js
-node_js: 'stable'
+node_js: stable
 cache: npm
 script: npm run build && npm test
+deploy:
+  - provider: npm
+    skip_cleanup: true
+    email: parkjs814@gmail.com
+    api_key:
+      secure: QGypsombDUlBa2/vHT7fd8oX6wk9lR3tP92ug7qv3yU2HIv/liHdGhWRvkXS8gbvjMt6SjLBCwms29nWaJD2axdvsagugP5pDLzWKMAufLpFXtzGbU+OnwwcFjjTFgY5zom8FWYeWWdIKtk4JqXCSNs3wgWkgxtntcAp+Nn2ksDoiiMGx5EWxeLiXyCOaHH8925tOhRseSojF56++FzFtdQsQrKMw0CFMeTjvPFH3oB2Et2uxHtZC4iIIyw1lylkE6wwuBm+GAlih2fyibncQnRhsp++oFBz/PTjQFstvmRBNrM6TsKfV9udgWlLE5NxHu0Na/3FCiSD/FLxeARq8EW+KYl7/pEZtefRGaadPSLFpyciGxirYBh9W33hUZ9tptV5blbuITN6UmMFiqAOZFnXgxgeZkVwyYpcE6GO+IJXIonQZb3JN9s4di6rLYjHzCcM7EFs+9tOhTf1WBGyDScbpmlcMAtv0LxVpV6UuUW/xhrt9GQq6pavaiyP8xOio3LoYl/5JDcIqG/mAUgS/V0yoOGnNgUHpstLGSY8FPXuN8jDZZabNtP47N7KKGvFvtMWsFdiJsUZ2Zr/4/4k7Jp7ibwG1NOxF/ue3qRe4fhPE7oiBJ7kdn55Rf/t4ct2U26PcTe+LM/58PeM3VIni9y+5CBEMQSHmkMQWB1AmXc=
+    on:
+      branch: master
+      tags: true
+  - provider: releases
+    api_key:
+      secure: WHjwNwbWH5CGB5Gm3e35KMK1n3VO6M6LWxh2w44Avx1Kk5RCTuOHFit1OO2vxcYopQnP4PIWfOwETOnUU+l5uTGJ7GI7LuN2TkAwUGypvIk0gy+7d9h3t2xcSWB3BKnIJq858Zvt+9y1aFSVmgmaSsl6eq0vqw7nUqTSp8nIOIyRX47hKf5dk0LoSMrlZC64JHoIPS3cZFoqK/TZnL+gSfPlpO0X54BVG/DGUC4nmn+nrYhQ5n/1oUupbDD77idliFQ/hbfuqZ0WRHCnEx879hpY1Bt4IdD9IAkhQSqtP9v0OW4IzuoWNoXcVoNe4VjDezvifyyi/JuOaNYwXZD+QtZT/tE4OFQ6I7dPbUFw+/ghzei3PBBwcOzLOxqA6xQj6eD+0Z/uoJ/9TELUPj/mYk6zc75at+NHOM5qkY2VcpDhlGzByDoDRWxob6z7yF5bHsHwPa5GQ0dUXrGFUiOrvZgIvQASVIHLEh3dUHqqz3bnRs7SbX6McQDikeShJ4/xWHtpHmZXd+DIyE4O8J3lsHppd3q2d4TLgo2knWRLSIZjLwfGQV4QvXvpkL7XXK30cPiU7nEcHIH0TBkKU6Ds8jj1gfSq0tWEfYbav8SoI2yAzkkEzF2qYwWqcRDIGQvSzoi/YP2M2ukWt6wxZQ10YT3OaEL61mq0YYxAqGUR2Mc=
+    on:
+      branch: master
+      tags: true
+  - provider: script
+    script: npm run docs && gh-pages -d docs
+    on:
+      branch: master
+      tags: true

@@ -1,6 +1,6 @@
 {
   "name": "algorithm-visualizer",
-  "version": "2.3.5",
+  "version": "2.3.6",
   "description": "Visualization Library for JavaScript",
   "keywords": [
     "algorithm",
@@ -36,9 +36,7 @@
     "dev": "rollup -c -w",
     "build": "rm -rf dist && rollup -c",
     "docs": "typedoc",
-    "test": "nyc ava",
-    "prepublishOnly": "npm run build && npm test",
-    "postpublish": "npm run docs && gh-pages -d docs"
+    "test": "nyc ava"
   },
   "files": [
     "dist"
