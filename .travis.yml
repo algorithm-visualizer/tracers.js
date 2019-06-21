@@ -1,7 +1,7 @@
 language: node_js
 node_js: stable
 cache: npm
-script: npm run build && npm test
+script: npm run build && npm test && npm run docs
 deploy:
   - provider: npm
     skip_cleanup: true
@@ -11,14 +11,18 @@ deploy:
     on:
       branch: master
       tags: true
-  - provider: releases
-    api_key:
+  - provider: pages
+    skip_cleanup: true
+    github_token:
       secure: na9rnofudeHOVxEvhoN9BLI03Zx629XxlEDx22X43aJM4C1pqBG7/V+Cfs6KzYxKR2oarY/BIi+EWi73HpDikz+MKgvffz4UamMreJp6byxByILI9kF6dvWybZUW5OvW1JVsRPpzyOXmcXrIKvHdq/z+s+9ljEXWHhu0wWt7/gFVD2LYhSDfjOruT1zbPjDb59YD83N2itQdYiujvMNO2BXehyOpjAVXofgMu70ZVKDlI1Qi3PdFCZFhAMKsHCOOq5/ib6tWxZ/JGNsYIl/p4pEgozvYDbuLHkmk7y05gq56PAaTW1/hf7lKwCNGTzMpQ0/iIK+grb+vTrqKUQibqddF9zyUsYeKWdNse2WsqCgwYxmLGNjOiRumxn1EwKRFaqnsE0nyK46vCaM64wVozQ84mGfhnoXxAwOTc9vmK0ga9h0hw0uGOQdW6Hsa6Ab+LWs11im0FIVp95XdRikhBYP8w0ZMDdv+o21eFvm7lXyhLS3A4lS2xRG/HgkU+/fcevY2zuclp1iFm2QzH3anp88+mr8m3qYGa8WYqnP5b7j0ifXTvxGDw1Q7BBslcP0NP0M5BjxpR6aVa2kI/R5jK9k6x3XxFtio3eFMxTKcgdL2tMIF2uYLVPP+CUuvPQk3H4T+iio7aeiWaJRiiLxX5PL+B0R6ICe5cAraGo2zw0g=
+    local_dir: docs
+    keep_history: true
     on:
       branch: master
       tags: true
-  - provider: script
-    script: npm run docs && gh-pages -d docs
+  - provider: releases
+    api_key:
+      secure: na9rnofudeHOVxEvhoN9BLI03Zx629XxlEDx22X43aJM4C1pqBG7/V+Cfs6KzYxKR2oarY/BIi+EWi73HpDikz+MKgvffz4UamMreJp6byxByILI9kF6dvWybZUW5OvW1JVsRPpzyOXmcXrIKvHdq/z+s+9ljEXWHhu0wWt7/gFVD2LYhSDfjOruT1zbPjDb59YD83N2itQdYiujvMNO2BXehyOpjAVXofgMu70ZVKDlI1Qi3PdFCZFhAMKsHCOOq5/ib6tWxZ/JGNsYIl/p4pEgozvYDbuLHkmk7y05gq56PAaTW1/hf7lKwCNGTzMpQ0/iIK+grb+vTrqKUQibqddF9zyUsYeKWdNse2WsqCgwYxmLGNjOiRumxn1EwKRFaqnsE0nyK46vCaM64wVozQ84mGfhnoXxAwOTc9vmK0ga9h0hw0uGOQdW6Hsa6Ab+LWs11im0FIVp95XdRikhBYP8w0ZMDdv+o21eFvm7lXyhLS3A4lS2xRG/HgkU+/fcevY2zuclp1iFm2QzH3anp88+mr8m3qYGa8WYqnP5b7j0ifXTvxGDw1Q7BBslcP0NP0M5BjxpR6aVa2kI/R5jK9k6x3XxFtio3eFMxTKcgdL2tMIF2uYLVPP+CUuvPQk3H4T+iio7aeiWaJRiiLxX5PL+B0R6ICe5cAraGo2zw0g=
     on:
       branch: master
       tags: true
