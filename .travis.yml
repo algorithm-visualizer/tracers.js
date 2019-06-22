@@ -3,25 +3,27 @@ node_js: stable
 cache: npm
 script: npm run build && npm test && npm run docs
 deploy:
+  # Publish to NPM
   - provider: npm
     skip_cleanup: true
     email: parkjs814@gmail.com
     api_key: $NPM_ACCESS_TOKEN
     on:
-      branch: master
       tags: true
+
+  # Publish TypeDoc to GitHub Pages
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_ACCESS_TOKEN
     local_dir: docs
     keep_history: true
     on:
-      branch: master
       tags: true
+
+  # Create a GitHub release
   - provider: releases
     api_key: $GITHUB_ACCESS_TOKEN
     on:
-      branch: master
       tags: true
 env:
   global:
