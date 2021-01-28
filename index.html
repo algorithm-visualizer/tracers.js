@@ -73,11 +73,45 @@
 				<h2 id="installation">Installation</h2>
 				<pre><code class="language-bash">npm install algorithm-visualizer</code></pre>
 				<h2 id="usage">Usage</h2>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> { LogTracer } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'algorithm-visualizer'</span>);
+				<pre><code class="language-js"><span class="hljs-comment">// import visualization libraries {</span>
+<span class="hljs-keyword">const</span> { Array2DTracer, Layout, LogTracer, Tracer, VerticalLayout } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'algorithm-visualizer'</span>);
+<span class="hljs-comment">// }</span>
 
-<span class="hljs-keyword">const</span> logTracer = <span class="hljs-keyword">new</span> LogTracer(<span class="hljs-string">'Scratch Paper'</span>);
+<span class="hljs-comment">// define tracer variables {</span>
+<span class="hljs-keyword">const</span> array2dTracer = <span class="hljs-keyword">new</span> Array2DTracer(<span class="hljs-string">'Grid'</span>);
+<span class="hljs-keyword">const</span> logTracer = <span class="hljs-keyword">new</span> LogTracer(<span class="hljs-string">'Console'</span>);
+<span class="hljs-comment">// }</span>
 
-logTracer.print(<span class="hljs-string">'Visualize your own algorithm here!'</span>);</code></pre>
+<span class="hljs-comment">// define input variables</span>
+<span class="hljs-keyword">const</span> messages = [
+  <span class="hljs-string">'Visualize'</span>,
+  <span class="hljs-string">'your'</span>,
+  <span class="hljs-string">'own'</span>,
+  <span class="hljs-string">'code'</span>,
+  <span class="hljs-string">'here!'</span>,
+];
+
+<span class="hljs-comment">// highlight each line of messages recursively</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">highlight</span>(<span class="hljs-params">line</span>) </span>{
+  <span class="hljs-keyword">if</span> (line &gt;= messages.length) <span class="hljs-keyword">return</span>;
+  <span class="hljs-keyword">const</span> message = messages[line];
+  <span class="hljs-comment">// visualize {</span>
+  logTracer.println(message);
+  array2dTracer.selectRow(line, <span class="hljs-number">0</span>, message.length - <span class="hljs-number">1</span>);
+  Tracer.delay();
+  array2dTracer.deselectRow(line, <span class="hljs-number">0</span>, message.length - <span class="hljs-number">1</span>);
+  <span class="hljs-comment">// }</span>
+  highlight(line + <span class="hljs-number">1</span>);
+}
+
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// visualize {</span>
+  Layout.setRoot(<span class="hljs-keyword">new</span> VerticalLayout([array2dTracer, logTracer]));
+  array2dTracer.set(messages);
+  Tracer.delay();
+  <span class="hljs-comment">// }</span>
+  highlight(<span class="hljs-number">0</span>);
+})();</code></pre>
 				<p>Check out the <a href="https://algorithm-visualizer.github.io/tracers.js/">API reference</a> for more information.</p>
 				<h2 id="contributing">Contributing</h2>
 				<p>Check out the <a href="https://github.com/algorithm-visualizer/tracers.js/blob/master/CONTRIBUTING.md">contributing guidelines</a>.</p>
@@ -119,6 +153,9 @@ logTracer.print(<span class="hljs-string">'Visualize your own algorithm here!'</
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/logtracer.html" class="tsd-kind-icon">Log<wbr>Tracer</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/scattertracer.html" class="tsd-kind-icon">Scatter<wbr>Tracer</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/tracer.html" class="tsd-kind-icon">Tracer</a>
