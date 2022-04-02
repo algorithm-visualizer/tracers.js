@@ -70,10 +70,9 @@ export default abstract class Commander {
 if (!process.env.ALGORITHM_VISUALIZER) {
   const axios = require('axios');
   const opn = require('opn');
-  process.on('beforeExit', () => {
+  process.once('beforeExit', () => {
     axios.post('https://algorithm-visualizer.org/api/visualizations', {content: JSON.stringify(Commander.commands)})
       .then((response: any) => opn(response.data, {wait: false}))
-      .catch(console.error)
-      .finally(() => process.exit());
+      .catch(console.error);
   });
 }
