@@ -155,8 +155,8 @@ namespace Randomize {
     /**
      * The function to generate the weight of each edge.
      *
-     * @param source The id of the node where the edge starts.
-     * @param target The id of the node where the edge ends.
+     * @param i The id of the node where the edge starts.
+     * @param j The id of the node where the edge ends.
      */
     value?: (i: number, j: number) => any;
 
