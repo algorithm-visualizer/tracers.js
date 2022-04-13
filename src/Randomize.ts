@@ -158,7 +158,7 @@ namespace Randomize {
      * @param source The id of the node where the edge starts.
      * @param target The id of the node where the edge ends.
      */
-    value?: (i: number, j: number) => any;
+    value?: (source: number, target: number) => any;
 
     /**
      * Whether to make the graph directed.
